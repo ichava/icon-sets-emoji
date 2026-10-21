@@ -6,6 +6,10 @@ All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https:
 
 ### Changed
 
+- **The sync workflow's verification step can run the suite.** It called `composer update` on
+  the bare runner, with no `setup-php` and no `COMPOSER_AUTH`, so Composer could not
+  authenticate against github.com for the `vcs` repositories and every verification reported
+  failure without running a test. It now sets up PHP 8.5 and passes the workflow token.
 - **`composer.json` lists `laranail/db-tools` as a VCS repository.** `ichava/core` is about to
   require it, and Composer reads `repositories` from the root package only, so a
   consumer that does not declare it cannot resolve core at all. The entry is harmless
