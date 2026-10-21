@@ -102,7 +102,7 @@
       }
     ],
     "update_command": {
-      "_note": "Refresh runs in ichava/maintainer-toolkit via the `emoji-sets` recipe -- composes Twemoji (npm) + OpenMoji (github) + Unicode CLDR. No pack-side script.",
+      "_note": "Refresh runs in ichava/icon-sets-sync via the `emoji-sets` recipe -- composes Twemoji (npm) + OpenMoji (github) + Unicode CLDR. No pack-side script.",
       "type": "recipe",
       "recipe": "emoji-sets"
     },
