@@ -38,7 +38,7 @@ provider, the `Set` and `Category` enums, the Blade component and the upstream m
 can build against the contract before the artwork lands.
 
 Until it does, render from a CDN using the URLs in the package README. The
-[maintainer toolkit](https://github.com/ichava/maintainer-toolkit) runs the Twemoji + OpenMoji +
+[icon-sets-sync](https://github.com/ichava/icon-sets-sync) runs the Twemoji + OpenMoji +
 CLDR pipeline and the assets arrive through an automated pull request.
 
 ---
