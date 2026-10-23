@@ -9,7 +9,14 @@
   "skip-changelog": true,
   "packages": {
     ".": {
-      "package-name": "ichava/icon-sets-emoji"
+      "package-name": "ichava/icon-sets-emoji",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": "resources/assets/svg/config.json",
+          "jsonpath": "$.package.version"
+        }
+      ]
     }
   }
 }
