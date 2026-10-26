@@ -47,4 +47,6 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Report vulnerabilities privately through
 
 ## License
 
-MIT. © Simtabi LLC. See [LICENSE](LICENSE).
+The package code is MIT, © Simtabi LLC. See [LICENSE](LICENSE).
+
+The emoji keep their own licences: [Twemoji](https://github.com/jdecked/twemoji) is CC-BY 4.0 (Twitter, Inc. and other contributors), [OpenMoji](https://openmoji.org/) is CC-BY-SA 4.0. Simtabi LLC claims no authorship of them. Both require credit wherever they are shown; the credit lines and terms are in [ATTRIBUTION.md](ATTRIBUTION.md), which ships with the package.

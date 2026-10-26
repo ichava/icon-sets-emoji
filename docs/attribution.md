@@ -27,8 +27,9 @@ If that is awkward for your project, use `twemoji`, which is CC-BY and asks only
 ## The integration is separately licensed
 
 The provider, enums, component and configuration in this repository are MIT under `Simtabi LLC`
-(see [`LICENSE`](../LICENSE)). The artwork licences above apply to the SVGs, once they exist:
-this package does not vendor them yet.
+(see [`LICENSE`](../LICENSE)). The artwork licences above apply to the 10,567 SVGs this package
+vendors under `resources/assets/svg/files/`. Simtabi LLC redistributes them and claims no authorship
+of them.
 
 ---
 
