@@ -12,7 +12,7 @@
       "unicode",
       "bundle"
     ],
-    "version": "0.1.0",
+    "version": "0.1.1",
     "upstream_version": "15.0.0",
     "type": "bulk",
     "license": "MIT (code) / CC-BY 4.0 (Twemoji assets) / CC-BY-SA 4.0 (OpenMoji assets)"
