@@ -63,17 +63,4 @@ return [
         'symbols'         => 'Signs, arrows, marks and abstract symbols',
         'flags'           => 'National, regional and thematic flags',
     ],
-
-    'commands' => [
-        'update'   => 'Update the emoji sets from their upstream sources',
-        'fetching' => 'Fetching the latest emoji sets...',
-        'complete' => 'Emoji sets updated successfully!',
-    ],
-
-    'info' => [
-        'version'       => 'Version :version',
-        'total_icons'   => ':count icons available',
-        'set_info'      => ':set: :count emoji',
-        'category_info' => ':category: :count emoji',
-    ],
 ];
