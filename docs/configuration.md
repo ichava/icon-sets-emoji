@@ -16,8 +16,11 @@ Publishing is optional; the defaults are merged either way.
 
 ## What is here
 
-Only what is specific to this pack -- the set name and prefix it registers under, and its own
-addressing defaults. Read the published file for the current list rather than a copy of it here.
+One key, `default_set`: the set an unqualified emoji resolves to (`twemoji`, `openmoji-color` or `openmoji-black`, `ICHAVA_EMOJI_DEFAULT_SET`).
+
+The set name and prefix are not here. Core reads both from `resources/assets/svg/config.json`
+through `IconsConstants`, which is canonical for the pack's name, prefix, kind, variants and
+categories; the copies this file used to carry were read by nothing and are gone.
 
 ## What is not here
 

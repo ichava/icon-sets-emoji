@@ -2,8 +2,6 @@
 
 declare(strict_types=1);
 
-use Simtabi\Laranail\Ichava\IconSetsEmoji\Constants\IconsConstants;
-
 /**
  * Emoji Sets configuration.
  *
@@ -12,11 +10,6 @@ use Simtabi\Laranail\Ichava\IconSetsEmoji\Constants\IconsConstants;
  * the small subset a host application may want to override per environment.
  */
 return [
-    'set' => [
-        'name'   => IconsConstants::getPackageName(),
-        'prefix' => IconsConstants::getPrefix(),
-    ],
-
     /*
     |--------------------------------------------------------------------------
     | Default Emoji Set
