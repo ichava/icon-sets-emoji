@@ -1,6 +1,6 @@
 {
     "name": "ichava/icon-sets-emoji",
-    "description": "Multi-source emoji bundle for Laravel: Twemoji (Twitter/X), OpenMoji color + black. Unicode 17 / Emoji 17 spec. Categorised by CLDR groups. Built on the Ichava ecosystem.",
+    "description": "10,567 emoji SVGs from Twemoji and OpenMoji (colour and black), grouped by CLDR category, for Laravel 13 on the Ichava icon ecosystem.",
     "type": "library",
     "keywords": [
         "laravel",
@@ -18,7 +18,7 @@
     "authors": [
         {
             "name": "Simtabi LLC",
-            "email": "ichava@simtabi.com",
+            "email": "opensource@simtabi.com",
             "homepage": "https://simtabi.com",
             "role": "Developer"
         }

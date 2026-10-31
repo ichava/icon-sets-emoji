@@ -4,6 +4,10 @@ All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https:
 
 ## [Unreleased]
 
+## [0.1.0] - TBD
+
+First release of `ichava/icon-sets-emoji`. The repository is published as a single commit; the 0.1.x tags cut between 2026-10-23 and 2026-10-27 (v0.1.0 to v0.1.1) are folded into this release, and their notes are kept below under *Archived history*.
+
 ### Added
 
 - **The pack declares its SVG kind.** `config.json` sets `package.kind` to `icon`, the kind ichava/core resolves for every category that names none of its own (core reads it from ichava/core#148; an older core ignores the key). `tests/Feature/SvgKindTest.php` fails on a kind core would not recognise, on a category that resolves none, and, against a core that has `IconRegistry::kindFor()`, on any category core resolves differently. `RetiredCopiesTest` also pins a non-empty description for every label core loads.
@@ -16,33 +20,41 @@ All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https:
 - **`sync-upstream.yml` commits as the github-actions bot's noreply address** instead of a personal GitHub login, matching packs scaffolded since icon-sets-package-scaffolder#60 and icon-sets-sync's default. The personal-contact guard now also reads `.github/` and `.dev/`.
 - **The package author is Simtabi LLC, not a person.** `composer.json` named a personal maintainer and mailbox as author; it now names `Simtabi LLC` with the role address `ichava@simtabi.com` (no personal contact is published, decided 2026-10-28). `NoPersonalContactTest` reads `composer.json`, `README.md`, `LICENSE`, `docs/` and `src/`, fails on a personal name or address, and fails when it reads fewer files than it did when written.
 - **CI tests against `ichava/core`'s `main`.** Every job that installs dependencies first aliases core's `main` into the 0.1 line (`composer require "ichava/core:dev-main as 0.1.99" --no-update`), prints the commit it resolved, and restores `composer.json` after the install, so the committed constraint is unchanged and the tests read it. Against that core, `SvgKindTest`'s comparison with `IconRegistry::kindFor()` runs instead of skipping.
+- **The author address is the community role address `opensource@simtabi.com`.** `composer.json` named `ichava@simtabi.com`. Simtabi LLC stays the only author, and `NoPersonalContactTest` pins the new address.
+- **The README follows the documentation standard for 0.1.0.** It shows the Packagist, Tests, Static analysis and MIT badges (the pack is listed on Packagist now), its Install section gives the `repositories` block for the `laranail/*` packages core needs, which are not on Packagist yet, and a new `## Quick start guide and usage` section has the seed step and two usage examples. `docs/installation.md` no longer says nothing in the ecosystem is on Packagist.
+- **release-please starts from `v0.1.0`.** `.release-please-manifest.json` and `config.json` `package.version` are `0.1.0`, the version the repository is tagged at when it is published as a single commit, and `bootstrap-sha` is removed from `release-please-config.json`, because it named a commit that publishing removes. After the tag, release-please reads `v0.1.0` as the last release.
+- **`sync-upstream.yml`'s header no longer says nothing is published to Packagist.** Comment only.
 
 ### Removed
 
 - **The `commands` and `info` translation groups.** They were written for an update command and an about block this pack does not ship (core's about section reads the registry), and nothing loaded them. `tests/Feature/RetiredCopiesTest.php` keeps them out.
 - **`set.name` and `set.prefix` from the config file.** Both copied what core already reads from `config.json` through `IconsConstants`, and nothing read them. The file keeps its one real setting, `default_set`.
 
-## [0.1.1] - 2026-10-27
+## [Archived history]
 
-### Added
+> Two archives, newest first. The 0.1.x sections cut between 2026-10-23 and 2026-10-27 were folded into 0.1.0 when the repository was published as a single commit; their tags and GitHub releases were removed. Below them are the sections from before versioning was re-based to 0.1.0 on 2026-10-23, whose tags and releases were removed then. Sections reproduced verbatim, one heading level down.
+
+### [0.1.1] - 2026-10-27
+
+#### Added
 
 - **Releases are prepared by release-please.** A *Release Please* workflow reads the Conventional Commit log, keeps one release pull request open that bumps `.release-please-manifest.json`, and tags the release when that pull request merges; the tag starts `release.yml` as before. On 0.x a breaking change bumps the minor and everything else bumps the patch. The minor moves in lockstep with the other coupled ichava packages: a breaking change anywhere in the family reaches every coupled repository as a `Release-As: 0.N.0` footer, so `^0.N` means the same line everywhere. Release notes stay hand-written: release-please is set to `skip-changelog`, and the workflow closes this `[Unreleased]` section under the new version on the release branch, failing if it is empty. It runs on `workflow_dispatch`, a weekly schedule, and the merge of a release pull request, so the only `push` trigger is still the tag. The pull request and the tag are made with a per-run Refresh Bot token, because ones made with `GITHUB_TOKEN` start no workflows. `release.yml` gains a `workflow_dispatch` recovery path for a tag push that started nothing; its first step refuses any ref that is not a `vX.Y.Z` tag.
 
-### Changed
+#### Changed
 
 - **`sync-upstream.yml`'s header describes what the workflow runs.** It said the image bundles Python and that a release ships to Packagist. The image is icon-sets-sync's Go binary with git, gh and Node, built from the toolkit's `main`, and a release is the GitHub release that release-please and `release.yml` make; nothing is published to Packagist. Comments only: the workflow runs the same steps.
 
-### Fixed
+#### Fixed
 
 - **The package says whose emoji these are, says what changed, and `LICENSE` reads as MIT again.** The asset notice was appended to `LICENSE`, which made GitHub's licence detection answer `NOASSERTION`. It moves, with its wording kept, into `ATTRIBUTION.md`, and `LICENSE` is the plain MIT text for the code. `ATTRIBUTION.md` gains an owners table (Twemoji: Twitter, Inc. and other contributors, then the jdecked/twemoji maintainers, CC-BY 4.0; OpenMoji: CC-BY-SA 4.0; the code: Simtabi LLC, MIT), a statement that Simtabi LLC claims no authorship of the emoji, a ready credit line per set (OpenMoji's is upstream's own suggestion), the licence URLs, and a note that a public page showing the emoji must carry the credit. Two claims were wrong and are corrected. It said the SVGs ship "unmodified", but the OpenMoji files differ from upstream in attribute order and whitespace (Twemoji's are byte-identical), so the file now records the changes, as both CC licences require. It also described `codepoints.json` and `names.json` index files, which do not exist. `docs/attribution.md` no longer says the package "does not vendor" the SVGs; it ships 10,567. The README's License section names both licences and points at `ATTRIBUTION.md`. `AttributionTest` fails if `ATTRIBUTION.md` is missing, export-ignored, or loses a credit line or licence URL, if `LICENSE` carries a notice, or if the README stops pointing at it. It failed against the old `LICENSE` first.
 - **`config.json` keeps up with releases.** Release-please now moves `resources/assets/svg/config.json`'s `package.version` with each release (`extra-files`), so the version the icon registry reports stays equal to the released one. Before this it stayed at the value it had when release-please was added. `ReleaseVersionTest` fails if `package.version` differs from `.release-please-manifest.json`, if the `extra-files` entry goes missing, or if the branch alias and the `ichava/core` constraint stop naming the same minor, or drift more than one minor ahead of the released one.
 - **The release pull request is found in the same run that opens it.** The step that hands the release branch to the changelog close asked `gh pr list --label 'autorelease: pending'`, which goes through GitHub's search index; on the first live run (js-motion#30) the index had not caught up with the pull request opened seconds earlier, so the close was skipped and a second dispatch was needed. It now takes the branch from release-please's own `pr` output, and only when the action reports nothing (the pull request was already current) falls back to the open pull requests, matched by the `release-please--branches--main` prefix rather than the label.
 
-## [0.1.0] - 2026-10-23
+### [0.1.0] - 2026-10-23
 
 Versioning re-based to 0.1.0. This release contains everything previously tagged v0.1.0 through v0.3.4 (2026-08-31 to 2026-09-26) plus the changes below, and requires `ichava/core` `^0.1`, the re-based core. Those tags and their GitHub releases were removed; every commit they pointed at is on `main`, and their sections are kept under *Archived pre-reset history*.
 
-### Changed
+#### Changed
 
 - **References follow the repository renames.** `ichava/maintainer-toolkit` is now `ichava/icon-sets-sync`, `ichava/motion` is `ichava/js-motion` and `ichava/react-browser` is `ichava/react-icon-browser`. GitHub redirects the old names, but redirects are not permanent.
 - **The sync workflow's verification step can run the suite.** It called `composer update` on
@@ -53,8 +65,6 @@ Versioning re-based to 0.1.0. This release contains everything previously tagged
   require it, and Composer reads `repositories` from the root package only, so a
   consumer that does not declare it cannot resolve core at all. The entry is harmless
   until then. Nothing here is on Packagist.
-
-## [Archived pre-reset history]
 
 > Versioning was re-based to 0.1.0 on 2026-10-23. The tags and GitHub releases below were removed;
 > every commit they pointed at is on `main`. Sections reproduced verbatim, one heading level down.
