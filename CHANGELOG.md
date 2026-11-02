@@ -1,0 +1,692 @@
+# Changelog
+
+All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) and [Semantic Versioning](https://semver.org/).
+
+## [Unreleased]
+
+## [0.1.0] - TBD
+
+First release of `ichava/icon-sets-emoji`. The repository is published as a single commit; the 0.1.x tags cut between 2026-10-23 and 2026-10-27 (v0.1.0 to v0.1.1) are folded into this release, and their notes are kept below under *Archived history*.
+
+### Added
+
+- **The pack declares its SVG kind.** `config.json` sets `package.kind` to `icon`, the kind ichava/core resolves for every category that names none of its own (core reads it from ichava/core#148; an older core ignores the key). `tests/Feature/SvgKindTest.php` fails on a kind core would not recognise, on a category that resolves none, and, against a core that has `IconRegistry::kindFor()`, on any category core resolves differently. `RetiredCopiesTest` also pins a non-empty description for every label core loads.
+- **`SiblingConstraintsTest` keeps every `ichava/*` constraint on the released line.** At release every ichava repository becomes one commit tagged `v0.1.0`, so 0.1.0 is the only version of any sibling. The test reads `require` and `require-dev` in `composer.json`, fails on any `ichava/*` constraint that 0.1.0 does not satisfy (checked with `composer/semver`, now a direct dev requirement), and fails when it finds no constraint to check.
+
+### Changed
+
+- **Every workflow runs on every pull request.** The `paths-ignore: '**.md'` and `paths:` filters are removed from the `pull_request` triggers, so every check reports on every pull request and can be a required status check on `main`. A path-filtered required check never reports on the pull requests it skips, and blocks them for good.
+- **PHPStan analyses at level `max`, up from 0.** `phpstan.neon.dist` now has icon-sets-bundled's shape: one counted, path-scoped ignore for the two `HasIconSetVariants` hooks PHPStan reports as unused because the trait calls them through `static::`, with `reportUnmatchedIgnoredErrors` failing the run if either stops occurring. No baseline, and no source change was needed. `PhpstanLevelTest` reads the config and fails if the level is anything but `max` or a baseline appears.
+- **`sync-upstream.yml` commits as the github-actions bot's noreply address** instead of a personal GitHub login, matching packs scaffolded since icon-sets-package-scaffolder#60 and icon-sets-sync's default. The personal-contact guard now also reads `.github/` and `.dev/`.
+- **The package author is Simtabi LLC, not a person.** `composer.json` named a personal maintainer and mailbox as author; it now names `Simtabi LLC` with the role address `ichava@simtabi.com` (no personal contact is published, decided 2026-10-28). `NoPersonalContactTest` reads `composer.json`, `README.md`, `LICENSE`, `docs/` and `src/`, fails on a personal name or address, and fails when it reads fewer files than it did when written.
+- **CI tests against `ichava/core`'s `main`.** Every job that installs dependencies first aliases core's `main` into the 0.1 line (`composer require "ichava/core:dev-main as 0.1.99" --no-update`), prints the commit it resolved, and restores `composer.json` after the install, so the committed constraint is unchanged and the tests read it. Against that core, `SvgKindTest`'s comparison with `IconRegistry::kindFor()` runs instead of skipping.
+- **The author address is the community role address `opensource@simtabi.com`.** `composer.json` named `ichava@simtabi.com`. Simtabi LLC stays the only author, and `NoPersonalContactTest` pins the new address.
+- **The README follows the documentation standard for 0.1.0.** It shows the Packagist, Tests, Static analysis and MIT badges (the pack is listed on Packagist now), its Install section gives the `repositories` block for the `laranail/*` packages core needs, which are not on Packagist yet, and a new `## Quick start guide and usage` section has the seed step and two usage examples. `docs/installation.md` no longer says nothing in the ecosystem is on Packagist.
+- **release-please starts from `v0.1.0`.** `.release-please-manifest.json` and `config.json` `package.version` are `0.1.0`, the version the repository is tagged at when it is published as a single commit, and `bootstrap-sha` is removed from `release-please-config.json`, because it named a commit that publishing removes. After the tag, release-please reads `v0.1.0` as the last release.
+- **`sync-upstream.yml`'s header no longer says nothing is published to Packagist.** Comment only.
+
+### Removed
+
+- **The `commands` and `info` translation groups.** They were written for an update command and an about block this pack does not ship (core's about section reads the registry), and nothing loaded them. `tests/Feature/RetiredCopiesTest.php` keeps them out.
+- **`set.name` and `set.prefix` from the config file.** Both copied what core already reads from `config.json` through `IconsConstants`, and nothing read them. The file keeps its one real setting, `default_set`.
+
+## [Archived history]
+
+> Two archives, newest first. The 0.1.x sections cut between 2026-10-23 and 2026-10-27 were folded into 0.1.0 when the repository was published as a single commit; their tags and GitHub releases were removed. Below them are the sections from before versioning was re-based to 0.1.0 on 2026-10-23, whose tags and releases were removed then. Sections reproduced verbatim, one heading level down.
+
+### [0.1.1] - 2026-10-27
+
+#### Added
+
+- **Releases are prepared by release-please.** A *Release Please* workflow reads the Conventional Commit log, keeps one release pull request open that bumps `.release-please-manifest.json`, and tags the release when that pull request merges; the tag starts `release.yml` as before. On 0.x a breaking change bumps the minor and everything else bumps the patch. The minor moves in lockstep with the other coupled ichava packages: a breaking change anywhere in the family reaches every coupled repository as a `Release-As: 0.N.0` footer, so `^0.N` means the same line everywhere. Release notes stay hand-written: release-please is set to `skip-changelog`, and the workflow closes this `[Unreleased]` section under the new version on the release branch, failing if it is empty. It runs on `workflow_dispatch`, a weekly schedule, and the merge of a release pull request, so the only `push` trigger is still the tag. The pull request and the tag are made with a per-run Refresh Bot token, because ones made with `GITHUB_TOKEN` start no workflows. `release.yml` gains a `workflow_dispatch` recovery path for a tag push that started nothing; its first step refuses any ref that is not a `vX.Y.Z` tag.
+
+#### Changed
+
+- **`sync-upstream.yml`'s header describes what the workflow runs.** It said the image bundles Python and that a release ships to Packagist. The image is icon-sets-sync's Go binary with git, gh and Node, built from the toolkit's `main`, and a release is the GitHub release that release-please and `release.yml` make; nothing is published to Packagist. Comments only: the workflow runs the same steps.
+
+#### Fixed
+
+- **The package says whose emoji these are, says what changed, and `LICENSE` reads as MIT again.** The asset notice was appended to `LICENSE`, which made GitHub's licence detection answer `NOASSERTION`. It moves, with its wording kept, into `ATTRIBUTION.md`, and `LICENSE` is the plain MIT text for the code. `ATTRIBUTION.md` gains an owners table (Twemoji: Twitter, Inc. and other contributors, then the jdecked/twemoji maintainers, CC-BY 4.0; OpenMoji: CC-BY-SA 4.0; the code: Simtabi LLC, MIT), a statement that Simtabi LLC claims no authorship of the emoji, a ready credit line per set (OpenMoji's is upstream's own suggestion), the licence URLs, and a note that a public page showing the emoji must carry the credit. Two claims were wrong and are corrected. It said the SVGs ship "unmodified", but the OpenMoji files differ from upstream in attribute order and whitespace (Twemoji's are byte-identical), so the file now records the changes, as both CC licences require. It also described `codepoints.json` and `names.json` index files, which do not exist. `docs/attribution.md` no longer says the package "does not vendor" the SVGs; it ships 10,567. The README's License section names both licences and points at `ATTRIBUTION.md`. `AttributionTest` fails if `ATTRIBUTION.md` is missing, export-ignored, or loses a credit line or licence URL, if `LICENSE` carries a notice, or if the README stops pointing at it. It failed against the old `LICENSE` first.
+- **`config.json` keeps up with releases.** Release-please now moves `resources/assets/svg/config.json`'s `package.version` with each release (`extra-files`), so the version the icon registry reports stays equal to the released one. Before this it stayed at the value it had when release-please was added. `ReleaseVersionTest` fails if `package.version` differs from `.release-please-manifest.json`, if the `extra-files` entry goes missing, or if the branch alias and the `ichava/core` constraint stop naming the same minor, or drift more than one minor ahead of the released one.
+- **The release pull request is found in the same run that opens it.** The step that hands the release branch to the changelog close asked `gh pr list --label 'autorelease: pending'`, which goes through GitHub's search index; on the first live run (js-motion#30) the index had not caught up with the pull request opened seconds earlier, so the close was skipped and a second dispatch was needed. It now takes the branch from release-please's own `pr` output, and only when the action reports nothing (the pull request was already current) falls back to the open pull requests, matched by the `release-please--branches--main` prefix rather than the label.
+
+### [0.1.0] - 2026-10-23
+
+Versioning re-based to 0.1.0. This release contains everything previously tagged v0.1.0 through v0.3.4 (2026-08-31 to 2026-09-26) plus the changes below, and requires `ichava/core` `^0.1`, the re-based core. Those tags and their GitHub releases were removed; every commit they pointed at is on `main`, and their sections are kept under *Archived pre-reset history*.
+
+#### Changed
+
+- **References follow the repository renames.** `ichava/maintainer-toolkit` is now `ichava/icon-sets-sync`, `ichava/motion` is `ichava/js-motion` and `ichava/react-browser` is `ichava/react-icon-browser`. GitHub redirects the old names, but redirects are not permanent.
+- **The sync workflow's verification step can run the suite.** It called `composer update` on
+  the bare runner, with no `setup-php` and no `COMPOSER_AUTH`, so Composer could not
+  authenticate against github.com for the `vcs` repositories and every verification reported
+  failure without running a test. It now sets up PHP 8.5 and passes the workflow token.
+- **`composer.json` lists `laranail/db-tools` as a VCS repository.** `ichava/core` is about to
+  require it, and Composer reads `repositories` from the root package only, so a
+  consumer that does not declare it cannot resolve core at all. The entry is harmless
+  until then. Nothing here is on Packagist.
+
+> Versioning was re-based to 0.1.0 on 2026-10-23. The tags and GitHub releases below were removed;
+> every commit they pointed at is on `main`. Sections reproduced verbatim, one heading level down.
+
+### [0.3.4] - 2026-09-26
+
+#### Added
+
+- **A test pins the `docs/` shape, and a workflow runs it on the changes that
+  break it.** `tests/Unit/DocsShapeTest.php` asserts the five concern pages the
+  authoring standard requires, this pack's own addressing page, that the README
+  indexes every page and lists none that is absent, and that each page opens at
+  its `# ` title and carries the index link **exactly once** as its footer.
+
+  `docs.yml` exists because of the gap it sits in: `tests.yml` and
+  `code-quality.yml` both carry `paths-ignore: ['**.md']`, so a markdown-only
+  pull request runs neither -- and a markdown-only pull request is exactly what
+  deletes a docs page. It triggers on `**.md`, the test itself and its own file,
+  and nothing else.
+
+  Two of its assertions exist to stop the guard passing vacuously: the page glob
+  is asserted non-empty before the loop reads it, and the README's page list is
+  asserted non-empty before it is cross-checked. A glob that matches nothing
+  otherwise makes every assertion below it true over a directory it never read.
+
+#### Changed
+
+- **`SECURITY.md` removed; the organization policy serves this repository now.**
+  The file was byte-identical across six ichava repositories and held nothing
+  specific to any of them. It was promoted into `ichava/.github` first, so the
+  policy improved before any copy was removed rather than after, and GitHub
+  serves that default on `/security/policy` for every repository without its
+  own. The two channels and the 48-hour acknowledgement are unchanged.
+
+- **The README's security link moved with it.** A relative
+  `[SECURITY.md](SECURITY.md)` is a path into this repository's file tree, and
+  the cascade does not put a file there -- it answers the policy page and
+  nothing else. Left alone the link would have become a 404 the moment the file
+  went, so it now points at `/security/policy` directly. `composer.json` and the
+  issue-template link already did.
+
+### [0.3.3] - 2026-09-22
+
+#### Changed
+
+- **`tests.yml` is now byte-identical to the other four packs'.** The file is
+  pack-agnostic -- it names no pack, no vendor and no upstream -- so there was
+  nothing to preserve and it was taken verbatim.
+
+  What this pack was missing: the `Setup problem matchers` step, which registers
+  PHP and PHPUnit matchers so a failure is annotated on the diff in the GitHub UI
+  instead of only appearing in the log. It was also short the `bcmath` and `intl` PHP
+  extensions the other four install, and had drifted in formatting -- a quoted
+  matrix, an unnamed checkout step and a differently named test step.
+
+  That closes the last scaffolding difference across the five packs.
+  `phpunit.xml.dist`, `.gitattributes`, `.editorconfig`, `tests/Pest.php`,
+  `tests.yml`, `code-quality.yml`, `release.yml`, `changelog.yml` and
+  `dependabot.yml` are now identical in all five.
+
+- **The "Authenticate Composer for private GitHub deps" step is gone.** It
+  configured a `GH_PACKAGES_PAT` against `github-oauth.github.com` because
+  `ichava/core` and `laranail/package-tools` were private. **Both are public
+  now**, and so is every other dependency this pack resolves, so the step
+  authenticated nothing.
+
+  It was already dead rather than merely redundant, and the estate proved it:
+  `icon-sets-emoji`'s `tests.yml` carries no such step and has been resolving
+  `ichava/core` from a VCS repository on every CI run, green. Removing it is
+  therefore not a gamble on rate limits -- it is matching the configuration
+  that already works.
+
+- **`.gitignore` brought onto the estate's.** This pack carried an older,
+  thinner generation. Two of the additions matter rather than merely tidy:
+
+  | | before | after |
+  |---|---|---|
+  | `auth.json` | **not ignored** | ignored |
+  | `.env`, `.env.local`, `.env.*.local` | **not ignored** | ignored |
+  | `/.ichava-maintainer-toolkit/` | not ignored | ignored |
+  | IDE cruft, lint caches, `*.log` | not ignored | ignored |
+
+  `auth.json` holds Composer credentials and `.env` holds whatever a developer
+  puts there; neither was covered, and this pack runs `sync-upstream.yml`, which
+  checks `ichava/maintainer-toolkit` out into the working tree -- a nested repo
+  that git records as a phantom gitlink if it is not ignored.
+
+  Dropped in the same pass: `scripts/.cache/` and `scripts/.downloads/`, which
+  named a directory that **has never been tracked in this repository**. The
+  `.venv/` rule is kept, because one exists in this checkout.
+
+- **CI states the `orchestra/testbench` constraint instead of inheriting it.**
+  The matrix gains a `testbench: ^11.0` include and the `composer require` line
+  pins it, matching the other four packs.
+
+  **This changes nothing about what gets installed, and an earlier report of
+  mine said otherwise.** The claim was that this pack "silently tests against
+  whatever resolves, so a testbench major would land here and nowhere else".
+  That is wrong: `composer.json` already requires `orchestra/testbench: ^11.0`
+  in `require-dev`, so a version outside `^11` was never reachable. Measured
+  both ways in a clean checkout -- **`v11.2.0` with the pin and `v11.2.0`
+  without it.**
+
+  The change is structural, not behavioural: the matrix can now vary testbench
+  alongside Laravel the way the other packs' can, and the workflow states its
+  own constraint rather than depending on the manifest to supply it.
+
+- **`phpunit.xml.dist` fails on an empty suite and on output during tests.**
+  `failOnEmptyTestSuite` and `beStrictAboutOutputDuringTests` were missing; the
+  file now matches `icon-sets-flag`'s exactly.
+
+- **`.gitattributes` replaced with the estate's.** This pack carried an older,
+  shorter generation: 7 `export-ignore` entries against the other packs' 11, and
+  **no `text`/`eol` rules at all**.
+
+  | | before | after |
+  |---|---|---|
+  | `*.svg` eol handling | unspecified | `-text`, over all 10,567 icons here |
+  | `CHANGELOG.md` | `export-ignore`d | **shipped**, as the other four ship it |
+  | `.editorconfig`, `CONTRIBUTING.md`, `docs/`, `phpstan.neon.dist` | shipped | excluded |
+  | `/scripts` | `export-ignore`d, and no such directory exists | gone |
+
+  Measured on the artefact: `git archive` drops from 34 entries to 28, and
+  `CHANGELOG.md` appears in a dist tarball that previously omitted it.
+
+- **`tests.yml` now carries the trigger and runtime settings the other packs
+  already had.** Four differences, every one in the same direction -- the
+  reference packs had it, this one did not:
+
+  | | before | after |
+  |---|---|---|
+  | `paths-ignore` | none | `'**.md'` |
+  | `branches` | `[main]` | unchanged |
+  | `concurrency` | none | cancel in-progress |
+  | `timeout-minutes` | none, so GitHub's default of 360 | 15 |
+
+  Found by a natural experiment rather than by reading: six identical
+  CHANGELOG-only pull requests opened on the same day ran different checks.
+  `browser`, `icon-sets-flag` and `icon-sets-tabler` ran only `Changelog`; this
+  pack ran the full PHP matrix, because the `'*.md'` to `'**.md'` sweep had
+  changed only the filters that already existed.
+
+  Every one of these fails in the safe direction -- running more than necessary,
+  never less -- so this is CI minutes on a free-plan allowance rather than a gate
+  that stopped firing. The missing `timeout-minutes` was the expensive one: a
+  hung job ran to six hours.
+
+  The `on:` and `concurrency:` blocks are now byte-identical to
+  `icon-sets-flag`'s, and a CHANGELOG-only pull request stays gated here because
+  `changelog.yml` has its own trigger on that file.
+
+- **The markdown path filter now matches markdown at any depth.**
+  `code-quality.yml` and `tests.yml` carried `paths-ignore: '*.md'`. In GitHub's
+  filter syntax a single `*` does not cross a `/`, so that pattern matched a
+  root-level `README.md` and nothing else -- every edit under `docs/` ran the
+  full PHP suite and the static-analysis job, which is precisely what the filter
+  existed to skip. `'**.md'` matches at any depth.
+
+  Worth stating which direction this failed in, because it decides how urgent it
+  was: a broken `paths-ignore` runs **more** than it should, never less. The cost
+  was CI minutes on a free-plan allowance, not a gate that stopped firing.
+
+- **Dead links to the deleted `ichava/documentation` repository removed.** That repository no
+  longer exists, so every cross-reference to it resolved to a 404. The reporting channels in
+  `SECURITY.md` were already stated inline and are unchanged; the Code of Conduct now cites the
+  Contributor Covenant directly. Historical mentions in this changelog are left as written.
+
+#### Removed
+
+- **`metadata.homepage` is absent rather than naming this package.** It read
+  `https://github.com/ichava/icon-sets-emoji`, duplicating
+  `metadata.repository`, and the browser API ships both side by side through
+  `publicMetadata()` -- two identical links under different names.
+
+  The field means the **upstream project's** own site, and this pack has no
+  single one: it vendors Twemoji and OpenMoji across three sets, both already
+  carried in `metadata.authors` with their URLs. Naming either as "the homepage"
+  would misdescribe two thirds of the icons here, so the honest value is no
+  value. Every reader already handles absence -- `IconRegistry` reads it with
+  `?? null`, and `array_intersect_key` simply omits it.
+
+  A test asserts the **absence**, rather than skipping the field, so filling it
+  back in with one of our own URLs fails here instead of shipping.
+
+### [0.3.2] - 2026-09-21
+
+#### Fixed
+
+- **Every documentation page carried the index breadcrumb twice.**
+  `[← Docs index](../README.md#documentation)` sat on line 1 as well as in its correct position
+  under the closing `---`, on all 3 pages this pack ships (`attribution.md`, `categories.md`, `sets.md`). The stray copy is deleted
+  and the footer is untouched.
+
+  It shipped in `v0.3.1`. The pass that introduced it added a footer to pages that already had a
+  conforming one, so the defect is **duplication, and the fix is deletion** -- the first report
+  described it as a misplacement needing reversal, which would have produced two footers instead
+  of two headers.
+
+  Measured across the estate rather than from the pull requests that caused it: **16 pages over
+  the five packs, which is every markdown page in `docs/` in all five.** A count taken from those
+  originating diffs said 11, and a second count taken with a shell loop that defaulted a failed
+  API read to zero said fewer still -- an empty response and a clean page are not the same thing,
+  and only one of them is true.
+
+### [0.3.1] - 2026-09-21
+
+#### Changed
+
+- **`ichava/core` `^0.4` is accepted.** The constraint read `^0.2.8 || ^0.3`, and a caret on a
+  `0.x` version pins the *minor*, so `0.4.0` did not satisfy it at all. An application that wanted
+  core `0.4` could not install this pack beside it, and Composer reported that as a conflict on
+  `ichava/core` rather than on the pack that was holding it back.
+
+  The branch is **added, not substituted**. `^0.2.8` and `^0.3` keep resolving, because nothing
+  here calls an API that `0.4` introduced, so raising the floor would strand 0.2 and 0.3 consumers
+  for no gain.
+
+#### Fixed
+
+- **`branch-alias` names the series `main` is on, not the one before it.**
+  `dev-main` was aliased to `0.2.x-dev` while this package has been on the 0.3
+  series since `v0.3.0`. The alias is what a path or VCS consumer sees when it
+  tracks `dev-main`, so `0.2.x-dev` fails a `^0.3` constraint outright and
+  Composer reports it as a conflict on this package rather than as a stale
+  alias.
+
+  Measured: `0.2.9999999.9999999-dev` does not satisfy `^0.3` or
+  `^0.3 || ^0.4`; `0.3.9999999.9999999-dev` satisfies both. `demos/ichava-app`
+  does not catch this because it requires every package at `*@dev`, which
+  matches either alias -- the integration check is structurally blind to it.
+
+- **`ATTRIBUTION.md` named the wrong version of the assets it attributes.** It read
+  *"Upstream version: 17.0.0 (Unicode 17 / Emoji 17 spec)"* under Twemoji. The shipped assets are
+  npm `@twemoji/svg` 15.0.0, repository tag `v15.1.0`, and the categorisation used CLDR 16.0 —
+  so both halves were wrong. **This is the document a redistributor relies on**, which makes a
+  wrong version here different in kind from a wrong version in a README.
+
+  OpenMoji had no version line at all; it now carries `15.1.0`, from `additional_sources`. One
+  section versioned and one not is the asymmetry that let the other number go unread.
+
+- **`package.upstream_version` still said `twemoji@17.0.0 + openmoji@latest`.** A *second*
+  version field, in the same file as the one corrected earlier and in a different block — so the
+  earlier fix to `upstream.current_version` left the file self-contradictory.
+
+  It is now `15.0.0`, matching. The composite form could not survive anyway:
+  `maintainer-toolkit`'s `version_keys` defaults to
+  `["upstream.current_version", "package.upstream_version"]`, documented as *"All are read
+  (first hit wins) and all are written"* — so the next sync writes a bare version string over it.
+  A field the tooling treats as holding one version cannot hold two.
+
+  > **Found by sweeping the package after declaring it clean.** The Sets-table fix merged, a
+  > grep for `17.0.0` was run, and the conclusion *"only CHANGELOG keeps the number"* was written
+  > in the same breath as output listing two live sites. The grep was right; the sentence was
+  > not.
+
+- **The `## Sets` table named a Twemoji release that did not produce the shipped assets, and its
+  heading said the whole table was unshipped.** The second is what let the first survive: a
+  reader who believes a table describes a future state does not check the version in it.
+
+  `## Sets (once Phase A1 lands)` — all three sets ship today, on `main`, and have for a while:
+
+  ```
+  resources/assets/svg/files/twemoji         3,435
+  resources/assets/svg/files/openmoji-color  3,566
+  resources/assets/svg/files/openmoji-black  3,566
+  ```
+
+  The version was `jdecked/twemoji v17.0.0`. That tag is real and the link worked — it simply is
+  not what the vendored assets came from. `config.json` records npm `15.0.0`, whose repository
+  tag is `v15.1.0`. **A working link under a label naming the wrong thing**, the same class as
+  the README cross-references fixed earlier and invisible to a link checker for the same reason.
+
+  `openmoji` now carries its version too. One row versioned and two not is the asymmetry that let
+  a stale number sit unexamined; the table is self-checking against `config.json` now, and says
+  so.
+
+- **`config.json` fed one `{version}` into three templates whose upstreams version
+  independently.** `twemoji_github_raw` read `.../jdecked/twemoji/v{version}/...`, so a caller
+  substituting `current_version: 15.0.0` — the documented pattern — built `v15.0.0`, **a tag that
+  repository has never had.** npm publishes `@twemoji/svg` 15.0.0; the repository's 15-line tag
+  is `v15.1.0`. The two numbers are not the same artifact and never were.
+
+  The template now carries **`{twemoji_github_tag}`**, with the value beside `current_version`:
+
+  ```json
+  "current_version":    "15.0.0",
+  "twemoji_github_tag": "v15.1.0",
+  ```
+
+  **The placeholder is deliberately not `{version}`.** A caller who substitutes only `{version}`
+  now gets a URL with `{twemoji_github_tag}` still in it — visibly unfinished — rather than a
+  well-formed `v15.0.0` that 404s and looks like an upstream outage. Failing legibly beats
+  failing plausibly.
+
+  This is the defect `_vendored_note` already warned about, one field lower down: *"They move
+  independently and conflating them is what left this pack empty."* The note said it of
+  `current_version` and the `cdn` block conflated them anyway.
+
+  All five templates were substituted from the config's own fields and fetched: `200` on each.
+
+  > Safe in-tree: `JsonConfigConstants::getUpstreamCdnUrls()` returns the map untouched and
+  > nothing in the estate interpolates it, the maintainer-toolkit reads `version_file` rather
+  > than `cdn`, and no test pins the shape. The exposure is external callers following the
+  > documented `str_replace` example — which is exactly who the visible placeholder is for.
+
+- **The CDN block advertised a Twemoji version that has never been published.** The README
+  hardcoded `@twemoji/svg@17.0.0` while `config.json` records `current_version: 15.0.0`. That is
+  not drift — `registry.npmjs.org/@twemoji/svg/17.0.0` answers **404**, and so did both CDN URLs
+  built from it. It is the same number `V4` caught in `config.json`, reintroduced in prose.
+
+- **The GitHub raw URL needed `v15.1.0`, not `v15.0.0`.** The three Twemoji templates do not
+  share a version space: npm `@twemoji/svg` publishes `15.0.0`, and the `jdecked/twemoji`
+  repository has no `v15.0.0` tag at all — its 15-line tag is `v15.1.0`. A blanket
+  `17.0.0` → `15.0.0` would have fixed two URLs and **broken a third that worked**.
+
+  > That mismatch is also live in `config.json`, which feeds one `{version}` into all three
+  > templates. `twemoji_github_raw` interpolated with `15.0.0` yields a tag that does not exist.
+  > Left alone here — it is config, not prose, and the update checker reads it.
+
+- **`{codepoint}` is lower-case for Twemoji and UPPER-case for OpenMoji.** The README documented
+  one convention (`1f600`) for five URLs across two upstreams with different filename casing, so
+  following it served a Twemoji glyph and 404'd on both OpenMoji templates. A caveat now says so
+  where the OpenMoji block starts.
+
+  All five URLs were checked end to end against a real codepoint rather than reasoned about:
+  `200` on each, with the casing each block states.
+
+- **The README's link label named the old central docs repo.** The URL was already correct and
+  points at the hosted `maintainer-toolkit` page, while the text beside it still read
+  `ichava/documentation/icon-pack-upstream-tracking.md`. The label now names the page the link
+  opens.
+
+  **No link checker sees this class.** The label is a code span, not a target, so the link
+  resolves and the text next to it is wrong — `lychee` and every `](...)` sweep pass it. Found
+  by grepping for `` `…documentation/….md` `` rather than for links, after the estate-wide link
+  scan came back at zero.
+
+- **Every usage example in this pack was wrong, and the rebrand caused only one of the four
+  defects.** `README.md` and `IconComponent`'s docblock disagreed with each other, and neither
+  matched what the provider registers.
+
+  | Was | Is | Why |
+  |---|---|---|
+  | `<x-ichava-emoji-sets:icon>` (README) | `<x-icon-sets-emoji-icon>` | wrong prefix **and** wrong shape |
+  | `<x-ichava-emoji-sets::icon>` (docblock) | `<x-icon-sets-emoji-icon>` | the same tag, spelled a third way |
+  | `<x-ichava:icon>` | `<x-ichava::icon>` | core registers `ichava::icon` |
+  | `ichava/icon-sets-emoji:twemoji/…` | `ichava/icon-sets-emoji::twemoji/…` | the path separator is `::` |
+
+  **The tag is derived, not written down.** `Support\ServiceProvider::loadBladeComponent()`
+  registers `Blade::component("{$packageName}-icon", …)` and this pack passes
+  `packageName: 'icon-sets-emoji'`, so the tag is `<x-icon-sets-emoji-icon />` and appears
+  nowhere in the source to grep for. Read off the registration rather than pattern-matched from
+  the old string, and cross-checked against `icon-sets-flag`'s README, which had it right.
+
+  The path separator is `config('ichava.ichava-core.separators.path', '::')`, so the
+  single-colon forms resolved to nothing. Anyone copying those four lines got no icon.
+
+### [0.3.0] - 2026-09-21
+
+#### Changed
+
+- **Renamed to `ichava/icon-sets-emoji`.** The composer package, the GitHub repository and the local
+  directory now all read `icon-sets-emoji`, restoring the one-name rule the ecosystem relies on.
+
+  **Breaking, and that is why the minor moves.** A `0.x` caret pins the minor, so `^0.2` will
+  not resolve to `0.3.0` -- consumers move deliberately rather than by accident.
+
+  | Surface | Was | Now |
+  |---|---|---|
+  | Composer package | `ichava/icon-sets-emoji` | `ichava/icon-sets-emoji` |
+  | PHP namespace | `Simtabi\Laranail\Ichava\IconSetsEmoji` | `Simtabi\Laranail\Ichava\IconSetsEmoji` |
+  | Config file and key | `config/emoji-sets.php` | `config/icon-sets-emoji.php` |
+
+  The config **filename** must match the package short name or the key silently doubles and
+  every `config()` read returns `null` -- the `V39` defect that once left an entire shipped
+  config inert.
+
+  **Upstream references are deliberately untouched.** The vendor this pack tracks shares the
+  token with our old name; a blanket rename would have aimed the update checker at a package
+  that does not exist and broken the CDN templates, failing in a host app rather than in CI.
+
+### [0.2.6] - 2026-09-21
+
+#### Added
+
+- **`actionlint` runs on every pull request.** Nothing validated the workflow files at all:
+  `release.yml` triggers only on `push: tags`, so a broken workflow was first observed as a
+  release that refused to start — after the decision to release had been made.
+
+  A YAML parse is not a substitute, and that is the sharp part. `yaml.safe_load` accepts a
+  duplicate key and silently keeps the last one, so a double-applied patch that left
+  `continue-on-error:` twice on a single step validated clean and would have failed only at tag
+  time. `actionlint` rejects what Actions rejects.
+
+  Checked against the defect rather than assumed: injecting that duplicate key, a typo'd step
+  key, and an `if:` referencing a property that does not exist are all caught, while
+  `yaml.safe_load` still parses the first of them without complaint.
+
+#### Fixed
+
+- **`tests/Unit/` was never run.** `phpunit.xml.dist` declared a `Feature`
+  testsuite and nothing else, so any unit test added here would have passed
+  locally when invoked by path and been silently skipped by `composer test` and
+  by CI. Every other pack in the family declares both suites; this one did not.
+
+  It nearly hid itself. The `Feature` suite is 7 tests / 15 assertions, and the
+  unit test added in this change is **also** 7 tests / 15 assertions, so the
+  totals matched exactly whether or not the new file ran.
+
+#### Added
+
+- **`resources/lang/` and `resources/views/`, bringing this pack to the canonical
+  resource shape.** It shipped neither.
+
+  This is the only pack in the family with two taxonomies, so it is the only one
+  whose lang file carries both `sets` (3 cases) and `categories` (10 cases),
+  each with descriptions. Set names are proper nouns from their upstream
+  projects and are not translated; their descriptions are.
+
+  `name` and `description` are **deliberately omitted**: `IconRegistry` reads
+  those from `resources/assets/svg/config.json`, which is canonical, and the
+  packs that kept a second copy had already drifted from it unnoticed.
+
+  `views/components/` is an empty placeholder kept for family consistency.
+  Nothing registers it -- the component path renders SVG directly.
+
+  `tests/Unit/ResourceShapeTest.php` pins the shape, holds both enums in step,
+  and asserts every `Set` case has a directory under `files/` -- a lang key
+  naming a set that does not ship is as wrong as one that does not exist.
+
+  > Nothing loads these translations yet. No pack calls `hasTranslations()`.
+
+#### Fixed
+
+- **A failed SBOM download no longer takes the whole release down.** `release.yml` generates the
+  SBOM before it publishes, and the Syft installer fetches its checksums from GitHub's
+  release-asset CDN. On 2026-09-21 that answered `504` for about twenty minutes, failing the job
+  four times *before* the publish step — so the tag existed with no release behind it, which is
+  the drift the release table exists to catch, produced by the release machinery itself.
+
+  Two changes. The step now retries once after 45 seconds, which covers a single transient `504`
+  — the common case. And a second failure no longer fails the job: the release publishes without
+  the asset and emits a `::warning::` naming the re-run.
+
+  **The two failure states are not equally bad, and that asymmetry is the whole design.** A
+  release missing an attachment is repaired by re-running this workflow, which re-attaches it. A
+  tag with no release persists silently until a person notices. Preferring the recoverable one
+  is worth the loss of "every release always carries an SBOM" as an absolute.
+
+  `fail_on_unmatched_files: false` is now stated on the publish step. It is already the action's
+  default, but the point of this change is that a missing SBOM must not fail the publish, so it
+  should not rest on a default a future reader has to know.
+
+#### Not yet shipped
+
+- **The emoji SVG assets.** The package ships the engine wiring and the
+  upstream/CDN metadata; it vendors no SVGs (`find . -name '*.svg'` returns 0).
+  The ETL that assembles them lives in
+  [`ichava/maintainer-toolkit`](https://github.com/ichava/maintainer-toolkit)
+  as `recipes/emoji_sets.py` with `config/emoji-sets.json`, and the assets are
+  intended to land through an automated pull request. Until they do, use the
+  CDN URLs documented in the README.
+
+#### Security
+
+- **Floor raised to `ichava/core: ^0.2.8`.** Core `0.2.8` fixes two issues a pack inherits
+  through the engine: `%` and `_` in a search query acted as `LIKE` wildcards, widening results
+  and forcing full-table scans; and the icon watcher followed symlinks and read files of
+  unbounded size, so a link inside a watched directory pointed the reader anywhere on disk.
+
+  `^0.2.5` still permitted resolving to `0.2.5`, `0.2.6` or `0.2.7`, all of which carry both.
+  The `|| ^0.3` arm is unchanged — core `0.3.0` moved the scaffolder out but left the engine,
+  registry, seeder and SVG pipeline untouched, so an installed pack is unaffected by it.
+
+### [0.2.5] - 2026-09-21
+
+#### Changed
+
+- **`ichava/core` widened to `^0.2.5 || ^0.3`.** Core `0.3.0` removes the icon-package
+  scaffolder and its stub tree, which moved to `ichava/icon-package-scaffolder`. This package
+  never used either, so it works unchanged on both series.
+
+  Widened rather than raised on purpose. A caret on a `0.x` version pins the minor, so plain
+  `^0.2.5` cannot resolve `0.3.0` and this package would have held every consumer back on the
+  0.2 series for a removal that does not affect it. Raising it to `^0.3` instead would have
+  forced a core upgrade on anyone deliberately staying on 0.2.x, for the same non-reason.
+  Both series genuinely work, so the constraint says so.
+
+### [0.2.4] - 2026-09-21
+
+#### Security
+
+- **Floor raised to `ichava/core: ^0.2.5`.** Core `0.2.5` closes an address-notation gap in the
+  pack update-check guard: `isPublicIp()` judged addresses by how they were written, so
+  `::7f00:1` and `::a9fe:a9fe` — IPv4-compatible IPv6 spellings of `127.0.0.1` and of the
+  `169.254.169.254` cloud-metadata address — were accepted while the same addresses in dotted
+  form were refused. `^0.2.4` still permitted resolving to `0.2.4`, which has it.
+
+  Weaker than the containment fixes in `0.2.4`: the notation was deprecated in 2006 and most
+  stacks will not route it. The floor moves anyway, because a constraint that can resolve to a
+  release with a known gap is the thing this rule exists to prevent.
+
+### [0.2.3] - 2026-09-21
+
+#### Security
+
+- **Floor raised to `ichava/core: ^0.2.4`.** Core `0.2.4` carries seven security fixes — post-
+  sanitizer attribute gating, icon-path containment, off-document paint URLs, sanitizer policy
+  flag enforcement, SVG driver containment, debug path leakage and pack update-check URL
+  restriction. `^0.2.3` still permitted resolving to `0.2.3`, which has all seven. Raising a
+  floor to exclude a known-broken release is not a pin; the constraint stays a range.
+
+### [0.2.2] - 2026-09-16
+
+#### Changed
+
+- **Requires `ichava/core: ^0.2.3`.** `0.2.2` decided readiness against columns the schema has
+  never had, so `ichava::ichava-core.info status` reported `UNINITIALIZED` on a fully seeded
+  database and both auto-seed listeners, which gate on the same check, never fired. The floor is
+  raised rather than the range widened; it still tracks every `0.2.x` from `0.2.3` on.
+
+### [0.2.1] - 2026-09-16
+
+#### Changed
+
+- **Requires `ichava/core: ^0.2.2`.** The floor is raised rather than the range widened: `0.2.0`
+  invoked six of its own Artisan commands by names it had just retired, and `0.2.1` still passed
+  `migrate` a `--path` that resolved nowhere, so `database migrate` reported success and created
+  no tables. `^0.2` admitted both. Raising a floor to exclude a known-broken release is not a
+  pin — the range still tracks every `0.2.x` from `0.2.2` on.
+
+### [0.2.0] - 2026-09-16
+
+#### Breaking
+
+- **Requires `ichava/core: ^0.2`.** Core `0.2.0` moved its config key to
+  `ichava.ichava-core.*` and renamed every Artisan command with no bare aliases, so a host
+  application upgrading this pack has to upgrade core with it.
+
+#### Added
+
+- `release.yml` — a `v*.*.*` tag now publishes a release whose body is that version's CHANGELOG
+  section. It fails closed when the tagged version has no section, so a tag pointing at the
+  wrong commit stops rather than publishing auto-generated notes.
+- A `code-quality` workflow and the six composer scripts (`pint`, `pint-fix`, `lint`, `format`,
+  `test`, `analyse`), with `phpstan/phpstan` at level 0. This pack had `laranail-pint` vendored
+  but no script and no gate, so nothing ran the formatter and the code had drifted from the
+  shared preset.
+- Removed a stale `lint` job that invoked raw `vendor/bin/pint --test` instead of
+  `laranail-pint`. It used Pint's default rules, so it contradicted the shared preset by
+  construction and the repo could not satisfy both at once.
+
+#### Changed
+
+- Third-party GitHub Actions pinned to the commit SHA of their latest release; `actions/*` keep
+  floating on a major tag. A tag is mutable, so `@v4` is a promise the action's owner can
+  rewrite — `tj-actions/changed-files` had every tag retagged to secret-dumping code in March
+  2025. Pinning GitHub's own actions inside GitHub's own runner buys nothing, so they are left
+  alone.
+- The test harness reads `DB_CONNECTION`, so the suite targets SQLite, PostgreSQL, MySQL or
+  MariaDB — the same environment variables as `ichava/core` and `ichava/browser`. SQLite runs
+  enable `foreign_key_constraints`, which Laravel only applies when the key is present.
+- Documentation names the renamed commands. The old bare names are gone rather than aliased, so
+  a README telling someone to run `php artisan ichava:database seed` named a command that no
+  longer exists.
+
+### [0.1.1] - 2026-09-02
+
+#### Added
+
+- **The emoji assets.** 10,567 SVGs across three sets -- `twemoji` (3,435), `openmoji-color`
+  (3,566) and `openmoji-black` (3,566) -- categorised into the nine CLDR groups.
+
+  This package was tagged and published shipping **zero** SVGs (`V4`). A pack with no assets
+  reports clean to every scanner, which is exactly the false-clean the corpus census was
+  built to detect.
+
+  The cause was three upstream versions being conflated into one. `current_version` read
+  `17.0.0`, which `@twemoji/svg` has never published -- npm's latest is `15.0.0` -- so
+  `npm pack` failed with an empty message. The build recipe additionally defaulted the
+  Unicode emoji version to `17.0`, which Unicode has not released either, so it 404ed on
+  `emoji-test.txt` before reaching npm at all. Neither failure was visible from the shipped
+  package; it simply had nothing in it.
+
+#### Changed
+
+- `resources/assets/svg/config.json` records what was actually vendored: Twemoji `15.0.0`,
+  OpenMoji `15.1.0`, Unicode CLDR `16.0`. The three are independent and are now labelled as
+  such, so the next refresh cannot repeat the conflation.
+
+### [0.1.0] - 2026-08-31
+
+First open-source release. Engine wiring only, by design and as the README
+states: the package registers the sets, categories and component so a host can
+build against the contract before the assets exist.
+
+#### Added
+
+- Repository layout matching the Ichava child-pack convention: `composer.json`,
+  `IconsServiceProvider`, `IconsConstants`, `Set` and `Category` enums,
+  `IconComponent`, `config/`, `tests/`, CI.
+- `Set` enum (Twemoji, OpenMoji color, OpenMoji black) implementing
+  `IconSetVariantInterface`. Twemoji is the default set.
+- `Category` enum mirroring the 10 Unicode CLDR emoji groups, with
+  human-readable labels and a canonical `ordered()` list for picker UIs.
+- `resources/assets/svg/config.json` carrying the set, category and upstream
+  metadata.
+- `ATTRIBUTION.md` recording the per-set asset licences: CC-BY 4.0 for Twemoji,
+  CC-BY-SA 4.0 for OpenMoji.
+
+#### Requirements
+
+- PHP `^8.4.1 || ^8.5`, `illuminate/support ^13.0`.
+- `ichava/core ^0.1` and `laranail/package-tools ^0.1.0`. Neither `ichava/*` nor
+  `laranail/*` is published on Packagist, so a consumer needs VCS repository
+  entries for both; the package declares its own.
+
+#### Notes on the version number
+
+This release is `0.1.0`, not `1.0.0`. A `v1.0.0` tag existed and did not
+describe anything: it was cut from a dependency-migration commit while the
+README already announced the package as "Phase A0 alpha (v0.1.0)" with no
+vendored assets. An icon pack that ships zero icons is not a 1.0, and it reports
+clean to every scanner precisely because there is nothing to scan. The tag now
+matches what the package actually contains.
