@@ -4,6 +4,10 @@ All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https:
 
 ## [Unreleased]
 
+### Changed
+
+- **The author and contact address is `ichava@simtabi.com`** (W-11, Sim 2026-11-03), replacing the community address `opensource@simtabi.com` wherever this repository named it. Vulnerability reports still go to `security@simtabi.com`. The test that guards the address expects `ichava@` now.
+
 ### Fixed
 
 - The weekly upstream sync opens its pull request with a Refresh Bot token. GitHub Actions' own
