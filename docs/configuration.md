@@ -26,7 +26,7 @@ categories; the copies this file used to carry were read by nothing and are gone
 
 Cache, queue, database, logging, security and the `ICHAVA_*` environment surface are **core's**, and
 apply to every pack at once. They are documented in core's
-[configuration guide](https://opensource.simtabi.com/documentation/ichava/core/configuration) and [environment variables](https://opensource.simtabi.com/documentation/ichava/core/environment).
+[configuration guide](https://github.com/ichava/core/blob/main/docs/configuration.md) and [environment variables](https://github.com/ichava/core/blob/main/docs/environment.md).
 
 A value set here cannot change how core seeds, caches or sanitises; that is the point of the split.
 
