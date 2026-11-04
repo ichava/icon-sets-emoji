@@ -4,6 +4,11 @@ All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https:
 
 ## [Unreleased]
 
+### Fixed
+
+- **Stray text line removed from `openmoji-color/travel-places/high-speed-train.svg`** (a lone `d` between `<g id="color">` and its first path, shipped by upstream OpenMoji 15.1.0; the same line icon-sets-openmoji#4 removed). The icon generator refuses such a file. A scan of all 10,567 SVGs found no other. Only that line changed.
+- **`tests/Unit/NoStrayTextNodesTest.php`** fails on any text directly under `<svg>` or `<g>` in the pack, floored at 10,567 files. Proven red on the unfixed file.
+
 ### Added
 
 - **`kinds.rules` and `items`** (both empty) in `config.json`, the two kind keys of the kinds-and-flavours contract (§1) beside the existing `package.kind`. Empty, they change no icon's kind.
