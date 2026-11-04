@@ -28,9 +28,9 @@ Credit line:
 
 ## OpenMoji Color + OpenMoji Black
 
-These two sets are deprecated since 0.2.0. They moved, byte for byte, to
-`ichava/icon-sets-openmoji`, and are removed here no earlier than 1.0.0. Until
-then they ship here under the terms below.
+For new work, prefer `ichava/icon-sets-openmoji` (since 0.1.0): the same artwork, byte for
+byte, in a pack of its own, so the CC-BY-SA terms reach only the applications that install it.
+The copies here stay supported and keep working in v0.1.0. They ship here under the terms below.
 
 - **Set directories**:
   - `resources/assets/svg/files/openmoji-color/`
