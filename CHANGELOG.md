@@ -12,11 +12,11 @@ All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https:
 ### Added
 
 - **`kinds.rules` and `items`** (both empty) in `config.json`, the two kind keys of the kinds-and-flavours contract (§1) beside the existing `package.kind`. Empty, they change no icon's kind.
-- **`tests/Feature/OpenmojiDeprecationTest.php`**: the deprecation markers are present and both sets still ship (7,132 files); alone, the old ids resolve and render here; with an icon-sets-openmoji registered, they resolve there and twemoji stays; doctor reports the missing replacement and a planted use of an old id.
+- **`tests/Feature/OpenmojiDeprecationTest.php`**: the deprecation markers are present, name 0.1.0 and carry no removal date, and both sets still ship (7,132 files); alone, the old ids resolve and render here; with an icon-sets-openmoji registered, they resolve there and twemoji stays; doctor reports the missing replacement and a planted use of an old id.
 
 ### Deprecated
 
-- **The `openmoji-color` and `openmoji-black` sets**, and the `Set::OPENMOJI_COLOR` and `Set::OPENMOJI_BLACK` cases (owner decision D9, 2026-11-04). They moved, unchanged, to [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji), so the CC-BY-SA terms reach only the applications that install it. Each category carries `"deprecated": { "since": "0.2.0", "remove_in": "1.0.0", "replacement": "ichava/icon-sets-openmoji" }`. **Nothing is removed and both still work:** with icon-sets-openmoji installed, ichava/core resolves `ichava/icon-sets-emoji::openmoji-*` ids there, does not seed this pack's copies and logs each old id once; without it they resolve here as before. Doctor's `alias.deprecated_ids` and `alias.replacement_missing` checks report their use. Removal needs the owner's approval and is no earlier than 1.0.0.
+- **The `openmoji-color` and `openmoji-black` sets**, and the `Set::OPENMOJI_COLOR` and `Set::OPENMOJI_BLACK` cases (owner decision D9, 2026-11-04). They moved, unchanged, to [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji), so the CC-BY-SA terms reach only the applications that install it. Each category carries `"deprecated": { "since": "0.1.0", "replacement": "ichava/icon-sets-openmoji" }`. **Nothing is removed and both still work:** with icon-sets-openmoji installed, ichava/core resolves `ichava/icon-sets-emoji::openmoji-*` ids there, does not seed this pack's copies and logs each old id once; without it they resolve here as before. Doctor's `alias.deprecated_ids` and `alias.replacement_missing` checks report their use. No removal date is set; removal needs the owner's approval.
 
 ### Changed
 

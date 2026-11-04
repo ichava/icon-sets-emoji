@@ -7,7 +7,7 @@
 
 > Emoji for the Ichava Laravel icon ecosystem: 10,567 SVGs across Twemoji, OpenMoji colour and OpenMoji black.
 
-The two OpenMoji sets are deprecated: they moved to [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji) and are removed here no earlier than 1.0.0. They keep working; see [Sets](docs/sets.md).
+For new work, install [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji) (preferred since 0.1.0) for the OpenMoji art: the same files in a pack of their own. The two OpenMoji sets here stay supported in v0.1.0, and with both packs installed the old ids resolve there; see [Sets](docs/sets.md).
 
 Requires [`ichava/core`](https://github.com/ichava/core) `^0.1` on PHP `^8.4.1 || ^8.5` and Laravel `^13`.
 
@@ -94,4 +94,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Report vulnerabilities privately through
 
 The package code is MIT, © Simtabi LLC. See [LICENSE](LICENSE).
 
-The emoji keep their own licences: [Twemoji](https://github.com/jdecked/twemoji) is CC-BY 4.0 (Twitter, Inc. and other contributors), [OpenMoji](https://openmoji.org/) is CC-BY-SA 4.0 (deprecated here; it moved to [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji)). Simtabi LLC claims no authorship of them. Both require credit wherever they are shown; the credit lines and terms are in [ATTRIBUTION.md](ATTRIBUTION.md), which ships with the package.
+The emoji keep their own licences: [Twemoji](https://github.com/jdecked/twemoji) is CC-BY 4.0 (Twitter, Inc. and other contributors), [OpenMoji](https://openmoji.org/) is CC-BY-SA 4.0 (preferred in [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji)). Simtabi LLC claims no authorship of them. Both require credit wherever they are shown; the credit lines and terms are in [ATTRIBUTION.md](ATTRIBUTION.md), which ships with the package.

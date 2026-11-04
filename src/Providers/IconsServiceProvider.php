@@ -21,10 +21,10 @@ use Simtabi\Laranail\Ichava\IconSetsEmoji\View\Components\IconComponent;
  *   - openmoji-color (community-driven flat colourful, CC-BY-SA 4.0)
  *   - openmoji-black (monochrome variant, CC-BY-SA 4.0)
  *
- * The two OpenMoji sets are deprecated since 0.2.0: they moved to
- * ichava/icon-sets-openmoji, and are removed here no earlier than 1.0.0.
- * They keep working. With that pack installed, core resolves their ids
- * there and does not seed this pack's copies.
+ * The two OpenMoji sets are deprecated since 0.1.0 in favour of
+ * ichava/icon-sets-openmoji, which holds the same art. They stay supported
+ * here. With that pack installed, core resolves their ids there and does
+ * not seed this pack's copies.
  *
  * Within each set, files are grouped by Unicode CLDR category
  * (smileys-emotion, people-body, animals-nature, ...) so picker UIs

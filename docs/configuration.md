@@ -16,7 +16,7 @@ Publishing is optional; the defaults are merged either way.
 
 ## What is here
 
-One key, `default_set`: the set an unqualified emoji resolves to (`twemoji`, `openmoji-color` or `openmoji-black`, `ICHAVA_EMOJI_DEFAULT_SET`). The two OpenMoji values are deprecated with their sets and still work; see [Sets](sets.md).
+One key, `default_set`: the set an unqualified emoji resolves to (`twemoji`, `openmoji-color` or `openmoji-black`, `ICHAVA_EMOJI_DEFAULT_SET`). The two OpenMoji values are deprecated in favour of icon-sets-openmoji and still work; see [Sets](sets.md).
 
 The set name and prefix are not here. Core reads both from `resources/assets/svg/config.json`
 through `IconsConstants`, which is canonical for the pack's name, prefix, kind, variants and

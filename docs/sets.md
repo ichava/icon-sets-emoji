@@ -8,8 +8,8 @@
 | Set | SVGs | Path prefix | Style | Upstream |
 |---|---:|---|---|---|
 | `twemoji` (default) | 3,435 | `twemoji/<category>/<name>` | full colour, Twitter/X house style | [jdecked/twemoji](https://github.com/jdecked/twemoji) |
-| `openmoji-color` (deprecated) | 3,566 | `openmoji-color/<category>/<name>` | full colour, OpenMoji house style | [OpenMoji](https://openmoji.org) |
-| `openmoji-black` (deprecated) | 3,566 | `openmoji-black/<category>/<name>` | single-colour line art, follows `currentColor` | [OpenMoji](https://openmoji.org) |
+| `openmoji-color` (prefer icon-sets-openmoji) | 3,566 | `openmoji-color/<category>/<name>` | full colour, OpenMoji house style | [OpenMoji](https://openmoji.org) |
+| `openmoji-black` (prefer icon-sets-openmoji) | 3,566 | `openmoji-black/<category>/<name>` | single-colour line art, follows `currentColor` | [OpenMoji](https://openmoji.org) |
 
 Counts measured with `find resources/assets/svg/files/<set> -name '*.svg' | wc -l`. The vendored
 version of each upstream is recorded in `resources/assets/svg/config.json`, not here: a version
@@ -18,11 +18,12 @@ written in two places drifts.
 `openmoji-black` is the only set that responds to a colour prop; the other two carry their own
 fills.
 
-> **The two OpenMoji sets are deprecated** (since 0.2.0). They moved, unchanged, to
-> [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji), and are removed here
-> no earlier than 1.0.0. They keep working: alone, this pack still
-> serves them; with icon-sets-openmoji installed, core resolves their ids there, does not seed this
-> pack's copies, and logs each old id once as deprecated. Doctor (`php artisan ichava::ichava-core.info doctor`)
+> **For new work, install [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji)**
+> (preferred since 0.1.0) for `openmoji-color` and `openmoji-black`. It holds the same files, unchanged,
+> in a pack of its own, so the CC-BY-SA terms reach only the applications that install it. The two
+> sets here stay supported in v0.1.0: alone, this pack still serves them; with both packs installed,
+> core resolves the old `ichava/icon-sets-emoji::openmoji-*` ids in icon-sets-openmoji, does not seed
+> this pack's copies, and logs each old id once as deprecated. Doctor (`php artisan ichava::ichava-core.info doctor`)
 > lists where a host still uses them.
 
 ## Addressing an emoji
