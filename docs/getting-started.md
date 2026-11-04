@@ -34,7 +34,6 @@ Zero rows means [Installation](installation.md) step 4 is outstanding. Core's
 ## See also
 
 - [Sets](sets.md) -- what this pack ships and how to address it
-- [Customisation](customization.md) -- colour, size, and this pack's own knobs
 - [Use an icon pack](https://github.com/ichava/core/blob/main/docs/recipes/use-an-icon-pack.md) -- the generic guide, for any pack
 
 ---

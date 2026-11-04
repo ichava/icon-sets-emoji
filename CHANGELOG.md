@@ -4,12 +4,23 @@ All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https:
 
 ## [Unreleased]
 
+### Added
+
+- **`kinds.rules` and `items`** (both empty) in `config.json`, the two kind keys of the kinds-and-flavours contract (§1) beside the existing `package.kind`. Empty, they change no icon's kind.
+- **`tests/Feature/OpenmojiDeprecationTest.php`**: the deprecation markers are present and both sets still ship (7,132 files); alone, the old ids resolve and render here; with an icon-sets-openmoji registered, they resolve there and twemoji stays; doctor reports the missing replacement and a planted use of an old id.
+
+### Deprecated
+
+- **The `openmoji-color` and `openmoji-black` sets**, and the `Set::OPENMOJI_COLOR` and `Set::OPENMOJI_BLACK` cases (owner decision D9, 2026-11-04). They moved, unchanged, to [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji), so the CC-BY-SA terms reach only the applications that install it. Each category carries `"deprecated": { "since": "0.2.0", "remove_in": "1.0.0", "replacement": "ichava/icon-sets-openmoji" }`. **Nothing is removed and both still work:** with icon-sets-openmoji installed, ichava/core resolves `ichava/icon-sets-emoji::openmoji-*` ids there, does not seed this pack's copies and logs each old id once; without it they resolve here as before. Doctor's `alias.deprecated_ids` and `alias.replacement_missing` checks report their use. Removal needs the owner's approval and is no earlier than 1.0.0.
+
 ### Changed
 
 - **Documentation links point at each repository's own `docs/`** (Sim, 2026-11-03: "all ichava repos have docs in their respective repos. thats by design"). Links to `opensource.simtabi.com/documentation/ichava/...` and the `opensource.simtabi.com/products/ichava/...` homepage, which answer 404 for every ichava page, now go to the matching `docs/*.md` on GitHub, or to the repository itself. Each target was checked to exist on that repository's `main`. The manifest's `homepage` and `support.docs` follow.
 - **The author and contact address is `ichava@simtabi.com`** (W-11, Sim 2026-11-03), replacing the community address `opensource@simtabi.com` wherever this repository named it. Vulnerability reports still go to `security@simtabi.com`. The test that guards the address expects `ichava@` now.
 
 ### Fixed
+
+- `docs/sets.md` no longer says the package ships no SVGs, and its examples use core's `<x-ichava::icon>` tag and `::` separator. `docs/getting-started.md` no longer links a `customization.md` that does not exist.
 
 - The weekly upstream sync opens its pull request with a Refresh Bot token. GitHub Actions' own
   token is not allowed to create pull requests in this organisation, so the sync failed at its last

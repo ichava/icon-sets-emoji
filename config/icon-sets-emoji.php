@@ -19,6 +19,9 @@ return [
     | provides the SVG.
     |
     | Supported: twemoji | openmoji-color | openmoji-black
+    |
+    | openmoji-color and openmoji-black are deprecated since 0.2.0 (they
+    | moved to ichava/icon-sets-openmoji) and still work here.
     */
     'default_set' => env('ICHAVA_EMOJI_DEFAULT_SET', 'twemoji'),
 ];
