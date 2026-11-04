@@ -24,7 +24,18 @@ enum Set: string implements IconSetVariantInterface
     use HasIconSetVariants;
 
     case TWEMOJI = 'twemoji';
+    /**
+     * @deprecated since 0.2.0, removed no earlier than 1.0.0. The set moved to
+     *             ichava/icon-sets-openmoji (`Set::OPENMOJI_COLOR` there). It keeps
+     *             working here; with that pack installed its ids resolve there.
+     */
     case OPENMOJI_COLOR = 'openmoji-color';
+
+    /**
+     * @deprecated since 0.2.0, removed no earlier than 1.0.0. The set moved to
+     *             ichava/icon-sets-openmoji (`Set::OPENMOJI_BLACK` there). It keeps
+     *             working here; with that pack installed its ids resolve there.
+     */
     case OPENMOJI_BLACK = 'openmoji-black';
 
     public function getPath(): string

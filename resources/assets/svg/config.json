@@ -3,7 +3,7 @@
   "package": {
     "name": "ichava/icon-sets-emoji",
     "title": "Emoji Sets",
-    "description": "Multi-source emoji bundle (Twemoji, OpenMoji color, OpenMoji black). Unicode 17 / Emoji 17 spec. Categorised by Unicode CLDR groups.",
+    "description": "Multi-source emoji bundle (Twemoji, OpenMoji color, OpenMoji black). Unicode 17 / Emoji 17 spec. Categorised by Unicode CLDR groups. The two OpenMoji sets are deprecated: they moved to ichava/icon-sets-openmoji, and are removed here no earlier than 1.0.0.",
     "keywords": [
       "emoji",
       "twemoji",
@@ -58,16 +58,30 @@
           "description": "Community-driven flat colourful emojis from HfG Schwäbisch Gmünd (CC-BY-SA 4.0).",
           "sets": [
             "openmoji-color"
-          ]
+          ],
+          "deprecated": {
+            "since": "0.2.0",
+            "remove_in": "1.0.0",
+            "replacement": "ichava/icon-sets-openmoji"
+          }
         },
         "openmoji-black": {
           "name": "OpenMoji Black",
           "description": "Monochrome outline variant of OpenMoji (CC-BY-SA 4.0). Ideal for single-colour designs.",
           "sets": [
             "openmoji-black"
-          ]
+          ],
+          "deprecated": {
+            "since": "0.2.0",
+            "remove_in": "1.0.0",
+            "replacement": "ichava/icon-sets-openmoji"
+          }
         }
-      }
+      },
+      "kinds": {
+        "rules": []
+      },
+      "items": {}
     }
   },
   "config": {

@@ -12,6 +12,11 @@ shipping Twemoji without its notice is a different one.
 | `openmoji-color` | [OpenMoji](https://openmoji.org) | CC-BY-SA 4.0 | yes, and derivatives must stay CC-BY-SA |
 | `openmoji-black` | [OpenMoji](https://openmoji.org) | CC-BY-SA 4.0 | as above |
 
+The OpenMoji sets are deprecated here and live on in
+[`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji). Until they are removed
+(1.0.0 at the earliest), installing this pack still installs CC-BY-SA artwork, and the terms below
+apply wherever you show it.
+
 The full text this package ships with is in [`ATTRIBUTION.md`](../ATTRIBUTION.md); it is the
 authoritative version and travels with the assets.
 
