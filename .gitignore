@@ -50,7 +50,8 @@ composer.local.json
 # Never track it: a nested repo is recorded as a phantom gitlink.
 /.icon-sets-sync/
 
-# A Python virtualenv is used here to build the corpus from three upstreams.
+# Leftovers of the retired Python toolchain (sync is Go only now, and this
+# pack has one upstream), kept ignored so an old checkout stays clean.
 # Kept because one exists in this checkout; the former scripts/.cache and
 # scripts/.downloads entries are gone, since scripts/ has never been tracked
 # in this repository.

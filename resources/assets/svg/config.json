@@ -3,7 +3,7 @@
   "package": {
     "name": "ichava/icon-sets-emoji",
     "title": "Emoji Sets",
-    "description": "Twemoji, Twitter/X's open-source emoji set, as SVG. Unicode 17 / Emoji 17 spec. Categorised by Unicode CLDR groups. OpenMoji is in ichava/icon-sets-openmoji.",
+    "description": "Twemoji, Twitter/X's open-source emoji set, as SVG. Twemoji 15, on the Unicode emoji 16.0 taxonomy. Categorised by Unicode CLDR groups. OpenMoji is in ichava/icon-sets-openmoji.",
     "keywords": [
       "emoji",
       "twemoji",
