@@ -12,6 +12,7 @@ All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https:
 
 ### Added
 
+- **The upstream licence texts, as the sync's licence sink writes them** (owner decision, 2026-11-05): `resources/assets/svg/licenses/twemoji/license` from the `@twemoji/svg` npm package, and `licenses/openmoji-color/LICENSE.txt` and `licenses/openmoji-black/LICENSE.txt` from the OpenMoji 15.1.0 release. Every sync wanted to add them and the pack had never tracked them, so each run reported licence changes. `ATTRIBUTION.md` is unchanged.
 - **`kinds.rules` and `items`** (both empty) in `config.json`, the two kind keys of the kinds-and-flavours contract (§1) beside the existing `package.kind`. Empty, they change no icon's kind.
 - **`tests/Feature/OpenmojiDeprecationTest.php`**: the deprecation markers are present, name 0.1.0 and carry no removal date, and both sets still ship (7,132 files); alone, the old ids resolve and render here; with an icon-sets-openmoji registered, they resolve there and twemoji stays; doctor reports the missing replacement and a planted use of an old id.
 
