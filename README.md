@@ -5,9 +5,7 @@
 [![Static analysis](https://github.com/ichava/icon-sets-emoji/actions/workflows/code-quality.yml/badge.svg)](https://github.com/ichava/icon-sets-emoji/actions/workflows/code-quality.yml)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-> Emoji for the Ichava Laravel icon ecosystem: 10,569 SVGs across Twemoji, OpenMoji colour and OpenMoji black.
-
-For new work, install [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji) (preferred since 0.1.0) for the OpenMoji art: the same files in a pack of their own. The two OpenMoji sets here stay supported in v0.1.0, and with both packs installed the old ids resolve there; see [Sets](docs/sets.md).
+> Emoji for the Ichava Laravel icon ecosystem: 3,435 Twemoji SVGs.
 
 Requires [`ichava/core`](https://github.com/ichava/core) `^0.1` on PHP `^8.4.1 || ^8.5` and Laravel `^13`.
 
@@ -62,7 +60,7 @@ The full documentation lives in this repository, under `docs/`, and is indexed b
 - [Configuration](docs/configuration.md) — this pack's config key, and what is core's instead
 - [Architecture](docs/architecture.md) — what it ships, what it delegates, and why
 - [Release](docs/release.md) — how a version is cut, and when the core floor moves
-- [Sets](docs/sets.md) — the three sets, their counts, how to pick one, and the OpenMoji deprecation
+- [Sets](docs/sets.md) — the Twemoji set, its count, and where OpenMoji went
 - [Categories](docs/categories.md) — the category tree and how to address a codepoint
 - [Attribution](docs/attribution.md) — per-set licence terms, which differ, and where versions are recorded
 
@@ -73,7 +71,7 @@ The full documentation lives in this repository, under `docs/`, and is indexed b
 - [Check pack updates](https://github.com/ichava/core/blob/main/docs/recipes/check-pack-updates.md) — the update checker and what its statuses mean
 - [Serve icons from a CDN](https://github.com/ichava/core/blob/main/docs/recipes/serve-icons-from-a-cdn.md) — reading this pack's CDN templates out of `config.json`
 
-Its upstream is `Twemoji and OpenMoji`; run core's [check pack updates](https://github.com/ichava/core/blob/main/docs/recipes/check-pack-updates.md) recipe to see whether a newer release exists.
+Its upstream is `Twemoji`; run core's [check pack updates](https://github.com/ichava/core/blob/main/docs/recipes/check-pack-updates.md) recipe to see whether a newer release exists.
 
 ## Contributing & security
 
@@ -83,4 +81,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). Report vulnerabilities privately through
 
 The package code is MIT, © Simtabi LLC. See [LICENSE](LICENSE).
 
-The emoji keep their own licences: [Twemoji](https://github.com/jdecked/twemoji) is CC-BY 4.0 (Twitter, Inc. and other contributors), [OpenMoji](https://openmoji.org/) is CC-BY-SA 4.0 (preferred in [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji)). Simtabi LLC claims no authorship of them. Both require credit wherever they are shown; the credit lines and terms are in [ATTRIBUTION.md](ATTRIBUTION.md), which ships with the package.
+The emoji keep their own licence: [Twemoji](https://github.com/jdecked/twemoji) is CC-BY 4.0 (Twitter, Inc. and other contributors). Simtabi LLC claims no authorship of them. It requires credit wherever they are shown; the credit lines and terms are in [ATTRIBUTION.md](ATTRIBUTION.md), which ships with the package.

@@ -4,7 +4,7 @@
 
 ## What it ships
 
-10,569 SVGs, addressed by sets -- see [Sets](sets.md). Counted from
+3,435 Twemoji SVGs, addressed by set -- see [Sets](sets.md). Counted from
 the tracked files rather than quoted from prose:
 
 ```bash

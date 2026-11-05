@@ -49,10 +49,9 @@ it(description: 'omits metadata.homepage rather than pointing it at this package
     );
 
     // Settled 2026-09-22. `metadata.homepage` is the UPSTREAM project's own
-    // site, and this pack has no single one: it vendors Twemoji and OpenMoji
-    // across three sets, both already carried in `metadata.authors` with their
-    // URLs. Naming either as "the homepage" would misdescribe two thirds of
-    // the icons here.
+    // site. When this pack vendored Twemoji and OpenMoji it had no single one;
+    // it now ships Twemoji only, already carried in `metadata.authors` with its
+    // URL, and the field stays absent until the pack's naming is settled.
     //
     // So the field is ABSENT, not filled with this package's own repository,
     // which is what it held before. That produced two identical links in the
