@@ -35,8 +35,7 @@ class IconsTest extends TestCase
         // The Set enum is the canonical variant axis for this pack. The
         // class helpers should namespace each set with the config prefix.
         $this->assertSame('emoji-twemoji', Set::TWEMOJI->getClass());
-        $this->assertSame('emoji-openmoji-color', Set::OPENMOJI_COLOR->getClass());
-        $this->assertSame('emoji-openmoji-black', Set::OPENMOJI_BLACK->getClass());
+        $this->assertSame(['twemoji'], array_map(static fn (Set $set): string => $set->value, Set::cases()));
     }
 
     public function test_default_set_falls_back_to_twemoji(): void
@@ -48,7 +47,6 @@ class IconsTest extends TestCase
 
         $this->assertSame(Set::TWEMOJI, $default);
         $this->assertTrue(Set::TWEMOJI->isDefault());
-        $this->assertFalse(Set::OPENMOJI_COLOR->isDefault());
     }
 
     public function test_category_enum_lists_unicode_cldr_groups(): void

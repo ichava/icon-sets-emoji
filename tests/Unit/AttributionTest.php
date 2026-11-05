@@ -23,8 +23,6 @@ function attribution_required(): array
         'Twitter, Inc and other contributors',
         'https://github.com/jdecked/twemoji',
         'https://creativecommons.org/licenses/by/4.0/',
-        'All emojis designed by [OpenMoji](https://openmoji.org/)',
-        'https://creativecommons.org/licenses/by-sa/4.0/',
     ];
 }
 

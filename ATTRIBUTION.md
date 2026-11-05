@@ -5,7 +5,6 @@ This package has several owners, and each part keeps its own licence.
 | Part | Owner | Licence |
 |---|---|---|
 | `resources/assets/svg/files/twemoji/` | Twitter, Inc. and other contributors (2014–2021); Jason Sofonia & Justine De Caires (2022–present), the jdecked/twemoji maintainers | CC-BY 4.0 |
-| `resources/assets/svg/files/openmoji-color/`, `openmoji-black/` | OpenMoji, HfG Schwäbisch Gmünd and contributors | CC-BY-SA 4.0 |
 | Everything else: the PHP, configuration, translations, tests and documentation | Simtabi LLC | MIT, see [`LICENSE`](LICENSE) |
 
 The MIT licence in `LICENSE` covers ONLY the package code. Each emoji asset retains its original licence. Simtabi LLC packages and redistributes the emoji; it did not draw them and claims no authorship of them.
@@ -26,46 +25,15 @@ Credit line:
 
 > Emoji graphics from [Twemoji](https://github.com/jdecked/twemoji), by Twitter, Inc. and other contributors, licensed under [CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
-## OpenMoji Color + OpenMoji Black
-
-For new work, prefer `ichava/icon-sets-openmoji` (since 0.1.0): the same artwork, byte for
-byte, in a pack of its own, so the CC-BY-SA terms reach only the applications that install it.
-The copies here stay supported and keep working in v0.1.0. They ship here under the terms below.
-
-- **Set directories**:
-  - `resources/assets/svg/files/openmoji-color/`
-  - `resources/assets/svg/files/openmoji-black/`
-- **Source**: <https://github.com/hfg-gmuend/openmoji>
-- **Upstream version**: 15.1.0
-- **Licence (code)**: LGPL-3.0
-- **Licence (assets)**: CC-BY-SA 4.0, <https://creativecommons.org/licenses/by-sa/4.0/>
-- **Attribution requirement**: credit "OpenMoji -- the open-source emoji
-  and icon project. License: CC BY-SA 4.0" and link to <https://openmoji.org/>.
-- **Share-alike notice**: CC-BY-SA 4.0 is *contagious for derivative works*.
-  Modifying these SVGs and redistributing the modifications obliges you to
-  release your modifications under CC-BY-SA 4.0. The share-alike clause
-  reaches the emoji files, not your downstream code. The OpenMoji files in
-  this package are not byte-identical to upstream (see "Changes" below), so
-  they are distributed here under CC-BY-SA 4.0, the same licence, and must
-  stay under it.
-
-Credit line, upstream's own suggestion:
-
-> All emojis designed by [OpenMoji](https://openmoji.org/) – the open-source emoji and icon project. License: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)
-
 ## Changes
 
-Both Creative Commons licences ask you to indicate changes. Measured
+The Creative Commons licence asks you to indicate changes. Measured
 2026-10-26 by comparing files against upstream by codepoint:
 
 - **Twemoji**: the files are byte-identical to `@twemoji/svg` 15.0.0
   (spot check, e.g. `activities/1st-place-medal.svg` against `1f947.svg`).
   Only the filenames and directories differ: they are named and grouped by
   CLDR name and category instead of codepoint.
-- **OpenMoji**: the files are reformatted, not redrawn. `1st-place-medal.svg`
-  differs from upstream `1F947.svg` at 15.1.0 in attribute order and
-  whitespace only (2,888 bytes against 2,889). They are renamed and grouped
-  the same way.
 
 When `ichava/core` renders an icon it also sanitises the SVG (it drops
 attributes and elements outside its allow-list), prefixes every `id` so two

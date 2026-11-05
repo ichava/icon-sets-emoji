@@ -27,15 +27,11 @@ declare(strict_types=1);
 
 return [
     'sets' => [
-        'twemoji'        => 'Twemoji',
-        'openmoji-color' => 'OpenMoji Color',
-        'openmoji-black' => 'OpenMoji Black',
+        'twemoji' => 'Twemoji',
     ],
 
     'set_descriptions' => [
-        'twemoji'        => "Twitter's open-source emoji set, flat and full-colour",
-        'openmoji-color' => 'OpenMoji in full colour, from the HfG Schwäbisch Gmünd project',
-        'openmoji-black' => 'OpenMoji as single-colour outlines, for monochrome contexts',
+        'twemoji' => "Twitter's open-source emoji set, flat and full-colour",
     ],
 
     'categories' => [

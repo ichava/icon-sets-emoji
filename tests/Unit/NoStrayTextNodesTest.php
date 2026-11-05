@@ -5,11 +5,10 @@ declare(strict_types=1);
 /**
  * No SVG in the pack may carry text directly under `<svg>` or `<g>`.
  *
- * Upstream OpenMoji 15.1.0 ships `1F684.svg` (high-speed-train, colour) with a
- * stray `d` between `<g id="color">` and its first path; this pack carries it as
- * openmoji-color/travel-places/high-speed-train.svg. It renders nothing, but
- * the icon generator (ichava/js-icon-components) refuses such a file, so it had
- * to exclude the icon. Text inside `<title>` and `<desc>` is legitimate and is
+ * Upstream OpenMoji 15.1.0 shipped `1F684.svg` (high-speed-train) with a stray
+ * `d` between `<g id="color">` and its first path, when this pack still carried
+ * OpenMoji. It renders nothing, but the icon generator (ichava/js-icon-components)
+ * refuses such a file, so the guard stays for every upstream. Text inside `<title>` and `<desc>` is legitimate and is
  * not looked at: only direct children of `svg` and `g` are.
  */
 function stray_text_nodes_in(string $file): array
@@ -58,8 +57,8 @@ function pack_svg_files(string $root): array
 it('has no text node directly under svg or g in any icon', function (): void {
     $files = pack_svg_files(dirname(__DIR__, 2) . '/resources/assets/svg/files');
 
-    // 3,435 twemoji + 3,567 openmoji-black + 3,567 openmoji-color. A glob that stops matching must fail, not pass.
-    expect(count($files))->toBeGreaterThanOrEqual(10569);
+    // 3,435 twemoji. A glob that stops matching must fail, not pass.
+    expect(count($files))->toBeGreaterThanOrEqual(3435);
 
     $offenders = [];
     foreach ($files as $file) {

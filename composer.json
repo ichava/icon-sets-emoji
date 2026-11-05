@@ -1,6 +1,6 @@
 {
     "name": "ichava/icon-sets-emoji",
-    "description": "10,569 emoji SVGs from Twemoji and OpenMoji (colour and black), grouped by CLDR category, for Laravel 13 on the Ichava icon ecosystem.",
+    "description": "3,435 Twemoji emoji SVGs, grouped by CLDR category, for Laravel 13 on the Ichava icon ecosystem.",
     "type": "ichava-icon-set",
     "keywords": [
         "laravel",
@@ -9,7 +9,6 @@
         "emojis",
         "svg",
         "twemoji",
-        "openmoji",
         "unicode",
         "ichava"
     ],
