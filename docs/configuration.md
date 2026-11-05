@@ -4,19 +4,19 @@
 
 ## The file and its key
 
-`config/icon-sets-emoji.php`, merged at `ichava.icon-sets-emoji`. **The filename must match the package short name** -- a
+`config/icon-sets-twemoji.php`, merged at `ichava.icon-sets-twemoji`. **The filename must match the package short name** -- a
 different name silently doubles the key and every read returns `null`, which shipped undetected in
 this ecosystem once before.
 
 ```bash
-php artisan vendor:publish --tag=ichava::icon-sets-emoji-config
+php artisan vendor:publish --tag=ichava::icon-sets-twemoji-config
 ```
 
 Publishing is optional; the defaults are merged either way.
 
 ## What is here
 
-One key, `default_set`: the set an unqualified emoji resolves to (`twemoji`, `ICHAVA_EMOJI_DEFAULT_SET`). OpenMoji is in icon-sets-openmoji; see [Sets](sets.md).
+One key, `default_set`: the set an unqualified emoji resolves to (`twemoji`, `ICHAVA_TWEMOJI_DEFAULT_SET`). OpenMoji is in icon-sets-openmoji; see [Sets](sets.md).
 
 The set name and prefix are not here. Core reads both from `resources/assets/svg/config.json`
 through `IconsConstants`, which is canonical for the pack's name, prefix, kind, variants and

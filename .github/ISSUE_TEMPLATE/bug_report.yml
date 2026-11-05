@@ -1,5 +1,5 @@
 name: Bug report
-description: Something in ichava/icon-sets-emoji misbehaves
+description: Something in ichava/icon-sets-twemoji misbehaves
 labels: [bug]
 body:
   - type: textarea

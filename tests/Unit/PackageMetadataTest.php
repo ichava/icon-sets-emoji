@@ -38,7 +38,7 @@ it(description: 'points metadata.repository at this package, not its upstream', 
     // Upstream identity is not homeless: the `upstream` block carries source,
     // version, version_check_url, licence, CDN and update command in full, and
     // `metadata.homepage` points at the upstream's own site where one exists.
-    expect($config['metadata']['repository'])->toBe('https://github.com/ichava/icon-sets-emoji');
+    expect($config['metadata']['repository'])->toBe('https://github.com/ichava/icon-sets-twemoji');
 });
 
 it(description: 'omits metadata.homepage rather than pointing it at this package', closure: function () {

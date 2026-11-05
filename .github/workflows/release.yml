@@ -78,8 +78,8 @@ jobs:
         uses: anchore/sbom-action@66cbf4bc1f1c0d2edc94016e65bc221b6bb0ad6c # v0.24.3
         with:
           format: cyclonedx-json
-          output-file: ichava-icon-sets-emoji.cdx.json
-          artifact-name: ichava-icon-sets-emoji.cdx.json
+          output-file: ichava-icon-sets-twemoji.cdx.json
+          artifact-name: ichava-icon-sets-twemoji.cdx.json
 
       - name: Back off before retrying the SBOM
         if: steps.sbom.outcome == 'failure'
@@ -92,8 +92,8 @@ jobs:
         uses: anchore/sbom-action@66cbf4bc1f1c0d2edc94016e65bc221b6bb0ad6c # v0.24.3
         with:
           format: cyclonedx-json
-          output-file: ichava-icon-sets-emoji.cdx.json
-          artifact-name: ichava-icon-sets-emoji.cdx.json
+          output-file: ichava-icon-sets-twemoji.cdx.json
+          artifact-name: ichava-icon-sets-twemoji.cdx.json
 
       - name: Note that the release ships without an SBOM
         if: steps.sbom.outcome == 'failure' && steps.sbom_retry.outcome == 'failure'
@@ -135,7 +135,7 @@ jobs:
             echo 'body<<CHANGELOG_EOF'
             printf '%s\n' "$SECTION"
             echo ''
-            echo "**Full changelog:** https://github.com/ichava/icon-sets-emoji/blob/main/CHANGELOG.md"
+            echo "**Full changelog:** https://github.com/ichava/icon-sets-twemoji/blob/main/CHANGELOG.md"
             echo 'CHANGELOG_EOF'
           } >> "$GITHUB_OUTPUT"
 
@@ -146,7 +146,7 @@ jobs:
           generate_release_notes: true
           # A `vX.Y.Z-rc.N` tag is a test build, never a release users should pick up.
           prerelease: ${{ contains(github.ref_name, '-') }}
-          files: ichava-icon-sets-emoji.cdx.json
+          files: ichava-icon-sets-twemoji.cdx.json
           # Explicit, though it is the action's default: a missing SBOM must not
           # fail the publish, so it must not rest on a default a reader has to know.
           fail_on_unmatched_files: false

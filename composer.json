@@ -1,5 +1,5 @@
 {
-    "name": "ichava/icon-sets-emoji",
+    "name": "ichava/icon-sets-twemoji",
     "description": "3,435 Twemoji emoji SVGs, grouped by CLDR category, for Laravel 13 on the Ichava icon ecosystem.",
     "type": "ichava-icon-set",
     "keywords": [
@@ -12,7 +12,7 @@
         "unicode",
         "ichava"
     ],
-    "homepage": "https://github.com/ichava/icon-sets-emoji",
+    "homepage": "https://github.com/ichava/icon-sets-twemoji",
     "license": "MIT",
     "authors": [
         {
@@ -58,18 +58,18 @@
     },
     "autoload": {
         "psr-4": {
-            "Simtabi\\Laranail\\Ichava\\IconSetsEmoji\\": "src/"
+            "Simtabi\\Laranail\\Ichava\\IconSetsTwemoji\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Simtabi\\Laranail\\Ichava\\IconSetsEmoji\\Tests\\": "tests/"
+            "Simtabi\\Laranail\\Ichava\\IconSetsTwemoji\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Simtabi\\Laranail\\Ichava\\IconSetsEmoji\\Providers\\IconsServiceProvider"
+                "Simtabi\\Laranail\\Ichava\\IconSetsTwemoji\\Providers\\IconsServiceProvider"
             ]
         },
         "branch-alias": {
@@ -93,9 +93,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "support": {
-        "source": "https://github.com/ichava/icon-sets-emoji",
-        "issues": "https://github.com/ichava/icon-sets-emoji/issues",
-        "security": "https://github.com/ichava/icon-sets-emoji/security/policy",
-        "docs": "https://github.com/ichava/icon-sets-emoji/tree/main/docs"
+        "source": "https://github.com/ichava/icon-sets-twemoji",
+        "issues": "https://github.com/ichava/icon-sets-twemoji/issues",
+        "security": "https://github.com/ichava/icon-sets-twemoji/security/policy",
+        "docs": "https://github.com/ichava/icon-sets-twemoji/tree/main/docs"
     }
 }

@@ -5,14 +5,14 @@ Do not report a suspected vulnerability in a public issue, discussion or pull re
 ## Reporting a vulnerability
 
 **Use GitHub private vulnerability reporting.** On this repository's
-[Security tab](https://github.com/ichava/icon-sets-emoji/security/policy), choose
+[Security tab](https://github.com/ichava/icon-sets-twemoji/security/policy), choose
 *Report a vulnerability*. The report arrives attached to the repository, with a
 draft advisory and a CVE request path in place. It is off by default, so switch
 it on once the repository is public, and keep naming it here only while the
 button is there:
 
 ```bash
-gh api -X PUT repos/ichava/icon-sets-emoji/private-vulnerability-reporting
+gh api -X PUT repos/ichava/icon-sets-twemoji/private-vulnerability-reporting
 ```
 
 **Or email [security@simtabi.com](mailto:security@simtabi.com).** That is the only

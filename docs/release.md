@@ -1,6 +1,6 @@
 # Release
 
-*Reference.* How a version of `ichava/icon-sets-emoji` is cut.
+*Reference.* How a version of `ichava/icon-sets-twemoji` is cut.
 
 ## The tag is the trigger
 

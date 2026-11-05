@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Simtabi\Laranail\Ichava\IconSetsEmoji\Providers;
+namespace Simtabi\Laranail\Ichava\IconSetsTwemoji\Providers;
 
 use Simtabi\Laranail\Ichava\Providers\IconPackServiceProvider;
-use Simtabi\Laranail\Ichava\IconSetsEmoji\Constants\IconsConstants;
-use Simtabi\Laranail\Ichava\IconSetsEmoji\View\Components\IconComponent;
+use Simtabi\Laranail\Ichava\IconSetsTwemoji\Constants\IconsConstants;
+use Simtabi\Laranail\Ichava\IconSetsTwemoji\View\Components\IconComponent;
 
 /**
  * Registers the Twemoji set with the Ichava registry.

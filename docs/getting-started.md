@@ -5,7 +5,7 @@
 ## Render one
 
 ```blade
-<x-ichava::icon name="ichava/icon-sets-emoji::<set>/<name>" class="w-6 h-6" />
+<x-ichava::icon name="ichava/icon-sets-twemoji::<set>/<name>" class="w-6 h-6" />
 ```
 
 The component is core's and is generic: the pack is named in the path, not in the tag. Which
@@ -14,7 +14,7 @@ The component is core's and is generic: the pack is named in the path, not in th
 ## Or from PHP
 
 ```blade
-{{ ichava('ichava/icon-sets-emoji::<set>/<name>')->class('w-5 h-5') }}
+{{ ichava('ichava/icon-sets-twemoji::<set>/<name>')->class('w-5 h-5') }}
 ```
 
 Both spellings of the path resolve to the same icon -- slash and dot are normalised by one
@@ -25,7 +25,7 @@ resolver, documented in core's [icon path format](https://github.com/ichava/core
 Almost always the seed has not run. Check with:
 
 ```bash
-php artisan ichava::ichava-core.info icons --package=ichava/icon-sets-emoji
+php artisan ichava::ichava-core.info icons --package=ichava/icon-sets-twemoji
 ```
 
 Zero rows means [Installation](installation.md) step 4 is outstanding. Core's

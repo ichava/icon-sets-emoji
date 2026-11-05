@@ -3,10 +3,10 @@
 declare(strict_types=1);
 
 use Simtabi\Laranail\Ichava\Services\IconRegistry;
-use Simtabi\Laranail\Ichava\IconSetsEmoji\Enums\Set;
-use Simtabi\Laranail\Ichava\IconSetsEmoji\Enums\Category;
-use Simtabi\Laranail\Ichava\IconSetsEmoji\Constants\IconsConstants;
-use Simtabi\Laranail\Ichava\IconSetsEmoji\Providers\IconsServiceProvider;
+use Simtabi\Laranail\Ichava\IconSetsTwemoji\Enums\Set;
+use Simtabi\Laranail\Ichava\IconSetsTwemoji\Enums\Category;
+use Simtabi\Laranail\Ichava\IconSetsTwemoji\Constants\IconsConstants;
+use Simtabi\Laranail\Ichava\IconSetsTwemoji\Providers\IconsServiceProvider;
 
 it('provider boots without error', function (): void {
     $providers = array_keys($this->app->getLoadedProviders());
@@ -18,15 +18,15 @@ it('provider boots without error', function (): void {
 });
 
 it('constants resolve from config json', function (): void {
-    $this->assertSame('ichava/icon-sets-emoji', IconsConstants::getVendorPackage());
-    $this->assertSame('Emoji Sets', IconsConstants::getTitle());
-    $this->assertSame('emoji', IconsConstants::getPrefix());
+    $this->assertSame('ichava/icon-sets-twemoji', IconsConstants::getVendorPackage());
+    $this->assertSame('Twemoji', IconsConstants::getTitle());
+    $this->assertSame('twemoji', IconsConstants::getPrefix());
 });
 
 it('set enum helpers use config prefix', function (): void {
     // The Set enum is the canonical variant axis for this pack. The
     // class helpers should namespace each set with the config prefix.
-    $this->assertSame('emoji-twemoji', Set::TWEMOJI->getClass());
+    $this->assertSame('twemoji-twemoji', Set::TWEMOJI->getClass());
     $this->assertSame(['twemoji'], array_map(static fn (Set $set): string => $set->value, Set::cases()));
 });
 
@@ -74,7 +74,7 @@ it('icon registry picks up the package', function (): void {
     $registry = $this->app->make(IconRegistry::class);
 
     $this->assertTrue(
-        $registry->isRegistered('ichava/icon-sets-emoji'),
-        'IconRegistry should have ichava/icon-sets-emoji registered after boot.',
+        $registry->isRegistered('ichava/icon-sets-twemoji'),
+        'IconRegistry should have ichava/icon-sets-twemoji registered after boot.',
     );
 });

@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Simtabi\Laranail\Ichava\IconSetsEmoji\Constants;
+namespace Simtabi\Laranail\Ichava\IconSetsTwemoji\Constants;
 
 use Simtabi\Laranail\Ichava\Support\PathResolver;
 use Simtabi\Laranail\Ichava\Constants\JsonConfigConstants;
 
 /**
- * Resolves emoji-sets metadata from its `resources/assets/svg/config.json`.
+ * Resolves Twemoji metadata from its `resources/assets/svg/config.json`.
  *
  * @see JsonConfigConstants
  */

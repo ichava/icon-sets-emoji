@@ -8,7 +8,7 @@
   "skip-changelog": true,
   "packages": {
     ".": {
-      "package-name": "ichava/icon-sets-emoji",
+      "package-name": "ichava/icon-sets-twemoji",
       "extra-files": [
         {
           "type": "json",

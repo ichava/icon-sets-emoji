@@ -34,7 +34,7 @@ own.
 A category says *what* an emoji is; a set says *which artwork*. Both appear in the path, set first:
 
 ```
-ichava/icon-sets-emoji::twemoji/smileys-emotion/grinning-face
+ichava/icon-sets-twemoji::twemoji/smileys-emotion/grinning-face
 ```
 
 ---

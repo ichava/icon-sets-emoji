@@ -13,12 +13,12 @@ This pack requires `ichava/core` and nothing else; the `laranail/*` packages are
 not this pack's. Nothing in the Ichava family is on Packagist yet, and Composer reads `repositories`
 only from the root package, so the **application's** `composer.json` names core, core's dependencies
 and this pack. Core's [installation guide](https://github.com/ichava/core/blob/main/docs/installation.md#1-point-composer-at-the-repositories) holds that block and is the one place that lists
-it; this pack's line is `https://github.com/ichava/icon-sets-emoji`.
+it; this pack's line is `https://github.com/ichava/icon-sets-twemoji`.
 
 ## Require it
 
 ```bash
-composer require ichava/icon-sets-emoji
+composer require ichava/icon-sets-twemoji
 ```
 
 The service provider is discovered automatically.
@@ -26,20 +26,27 @@ The service provider is discovered automatically.
 ## Seed it
 
 ```bash
-php artisan ichava::ichava-core.database seed --package=ichava/icon-sets-emoji
+php artisan ichava::ichava-core.database seed --package=ichava/icon-sets-twemoji
 ```
 
 **This step is not optional.** Until it runs the registry holds no rows for this pack and every
 lookup returns nothing, which is the most common "it does not work" in the ecosystem. See
 [seed pack icons](https://github.com/ichava/core/blob/main/docs/recipes/seed-pack-icons.md).
 
+## Ids stored before the rename
+
+This pack was renamed, forward only, with no alias: its composer name, namespace, config file and
+Blade tag all changed, and so did the package half of every icon id. Ids stored under the former
+name (the CHANGELOG's `[Unreleased]` entry names it) no longer resolve. Delete those rows and seed
+again with the command above; favourites and preferences that named an old id must be chosen again.
+
 ## Publish the config, only if you need it
 
 ```bash
-php artisan vendor:publish --tag=ichava::icon-sets-emoji-config
+php artisan vendor:publish --tag=ichava::icon-sets-twemoji-config
 ```
 
-That writes `config/icon-sets-emoji.php`, read back as `ichava.icon-sets-emoji`. The defaults are merged without publishing,
+That writes `config/icon-sets-twemoji.php`, read back as `ichava.icon-sets-twemoji`. The defaults are merged without publishing,
 so publish only to change something -- see [Configuration](configuration.md).
 
 ---
