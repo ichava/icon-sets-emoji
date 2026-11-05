@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace Simtabi\Laranail\Ichava\IconSetsEmoji\Providers;
 
-use Simtabi\Laranail\Ichava\Support\IconPackServiceProvider;
+use Simtabi\Laranail\Ichava\Providers\IconPackServiceProvider;
 use Simtabi\Laranail\Ichava\IconSetsEmoji\Constants\IconsConstants;
 use Simtabi\Laranail\Ichava\IconSetsEmoji\View\Components\IconComponent;
 
 /**
  * Registers the Twemoji set with the Ichava registry.
  *
- *   - twemoji (Twitter/X, Unicode 17, CC-BY 4.0 assets)
+ *   - twemoji (Twitter/X, Twemoji 15 on the Unicode emoji 16.0 taxonomy, CC-BY 4.0 assets)
  *
  * OpenMoji is in ichava/icon-sets-openmoji.
  *
