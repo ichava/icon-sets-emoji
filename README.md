@@ -1,8 +1,8 @@
-# ichava/icon-sets-emoji
+# ichava/icon-sets-twemoji
 
-[![Packagist](https://img.shields.io/packagist/v/ichava/icon-sets-emoji)](https://packagist.org/packages/ichava/icon-sets-emoji)
-[![Tests](https://github.com/ichava/icon-sets-emoji/actions/workflows/tests.yml/badge.svg)](https://github.com/ichava/icon-sets-emoji/actions/workflows/tests.yml)
-[![Static analysis](https://github.com/ichava/icon-sets-emoji/actions/workflows/code-quality.yml/badge.svg)](https://github.com/ichava/icon-sets-emoji/actions/workflows/code-quality.yml)
+[![Packagist](https://img.shields.io/packagist/v/ichava/icon-sets-twemoji)](https://packagist.org/packages/ichava/icon-sets-twemoji)
+[![Tests](https://github.com/ichava/icon-sets-twemoji/actions/workflows/tests.yml/badge.svg)](https://github.com/ichava/icon-sets-twemoji/actions/workflows/tests.yml)
+[![Static analysis](https://github.com/ichava/icon-sets-twemoji/actions/workflows/code-quality.yml/badge.svg)](https://github.com/ichava/icon-sets-twemoji/actions/workflows/code-quality.yml)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 > Emoji for the Ichava Laravel icon ecosystem: 3,435 Twemoji SVGs.
@@ -11,12 +11,12 @@ Requires [`ichava/core`](https://github.com/ichava/core) `^0.1` on PHP `^8.4.1 |
 
 ## Install
 
-This pack requires [`ichava/core`](https://github.com/ichava/core) and nothing else. Nothing in the Ichava family is on Packagist yet, so the **application's** `composer.json` first names the repositories: core's [installation guide](https://github.com/ichava/core/blob/main/docs/installation.md#1-point-composer-at-the-repositories) holds the one block that lists them, core's dependencies included, and this pack's line in it is `https://github.com/ichava/icon-sets-emoji`.
+This pack requires [`ichava/core`](https://github.com/ichava/core) and nothing else. Nothing in the Ichava family is on Packagist yet, so the **application's** `composer.json` first names the repositories: core's [installation guide](https://github.com/ichava/core/blob/main/docs/installation.md#1-point-composer-at-the-repositories) holds the one block that lists them, core's dependencies included, and this pack's line in it is `https://github.com/ichava/icon-sets-twemoji`.
 
 Then require the pack:
 
 ```bash
-composer require ichava/icon-sets-emoji
+composer require ichava/icon-sets-twemoji
 ```
 
 The service provider is discovered automatically. Core's [installation guide](https://github.com/ichava/core/blob/main/docs/installation.md) covers core's own setup.
@@ -28,23 +28,23 @@ The service provider is discovered automatically. Core's [installation guide](ht
 Seed the pack once after installing it, and again after upgrading it:
 
 ```bash
-php artisan ichava::ichava-core.database seed --package=ichava/icon-sets-emoji
+php artisan ichava::ichava-core.database seed --package=ichava/icon-sets-twemoji
 ```
 
 The seed is not optional: until it runs the registry holds no rows for this pack and every lookup returns nothing. No configuration is needed; the defaults are merged without publishing anything.
 
 ### Usage
 
-Icons are addressed as `ichava/icon-sets-emoji::<set>/<category>/<name>`. In Blade, through core's component:
+Icons are addressed as `ichava/icon-sets-twemoji::<set>/<category>/<name>`. In Blade, through core's component:
 
 ```blade
-<x-ichava::icon name="ichava/icon-sets-emoji::twemoji/smileys-emotion/grinning-face" class="w-6 h-6" />
+<x-ichava::icon name="ichava/icon-sets-twemoji::twemoji/smileys-emotion/grinning-face" class="w-6 h-6" />
 ```
 
 Or from PHP, through core's helper:
 
 ```blade
-{{ ichava('ichava/icon-sets-emoji::twemoji/smileys-emotion/grinning-face')->class('w-6 h-6') }}
+{{ ichava('ichava/icon-sets-twemoji::twemoji/smileys-emotion/grinning-face')->class('w-6 h-6') }}
 ```
 
 See [Getting started](docs/getting-started.md) for the full walkthrough, and the [Documentation](#documentation) index below for everything else.
@@ -76,7 +76,7 @@ Its upstream is `Twemoji`; run core's [check pack updates](https://github.com/ic
 
 ## Contributing & security
 
-See [CONTRIBUTING.md](CONTRIBUTING.md). Report vulnerabilities privately through [security policy](https://github.com/ichava/icon-sets-emoji/security/policy) — never in a public issue.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Report vulnerabilities privately through [security policy](https://github.com/ichava/icon-sets-twemoji/security/policy) — never in a public issue.
 
 ## License
 

@@ -108,6 +108,6 @@ it(description: 'resolves the same kinds through core', closure: function () {
     $registry = $this->app->make(IconRegistry::class);
 
     foreach (emoji_resolved_kinds() as $slug => $kind) {
-        expect($registry->kindFor('ichava/icon-sets-emoji', $slug)->value)->toBe($kind);
+        expect($registry->kindFor('ichava/icon-sets-twemoji', $slug)->value)->toBe($kind);
     }
 });

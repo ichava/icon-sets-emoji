@@ -1,5 +1,5 @@
 name: Feature request
-description: Propose an improvement to ichava/icon-sets-emoji
+description: Propose an improvement to ichava/icon-sets-twemoji
 labels: [enhancement]
 body:
   - type: textarea

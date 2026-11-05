@@ -51,7 +51,7 @@ it(description: 'keeps a description for every label core loads', closure: funct
 it(description: 'keeps only its own default in config, with no copy of the set name or prefix', closure: function () {
     // `set.name` and `set.prefix` copied what core already takes from
     // config.json through IconsConstants, and nothing read them.
-    $config = config('ichava.icon-sets-emoji');
+    $config = config('ichava.icon-sets-twemoji');
 
     expect($config)->toBeArray()
         ->and(array_keys($config))->toBe(['default_set']);

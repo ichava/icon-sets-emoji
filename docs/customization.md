@@ -7,8 +7,8 @@
 The SVGs are square, with a `viewBox`, so any width and height utility scales them.
 
 ```blade
-<x-ichava::icon name="ichava/icon-sets-emoji::twemoji/activities/1st-place-medal" class="w-4 h-4" />
-<x-ichava::icon name="ichava/icon-sets-emoji::twemoji/activities/1st-place-medal" class="w-12 h-12" />
+<x-ichava::icon name="ichava/icon-sets-twemoji::twemoji/activities/1st-place-medal" class="w-4 h-4" />
+<x-ichava::icon name="ichava/icon-sets-twemoji::twemoji/activities/1st-place-medal" class="w-12 h-12" />
 ```
 
 ## Colour
@@ -20,7 +20,7 @@ Not recolourable. The fills are fixed in each file, and `class="text-…"` or `-
 An emoji that carries meaning needs a text alternative:
 
 ```blade
-<x-ichava::icon name="ichava/icon-sets-emoji::twemoji/activities/1st-place-medal" aria-label="First place" class="w-6 h-6" />
+<x-ichava::icon name="ichava/icon-sets-twemoji::twemoji/activities/1st-place-medal" aria-label="First place" class="w-6 h-6" />
 ```
 
 A decorative emoji beside a text label can omit it.

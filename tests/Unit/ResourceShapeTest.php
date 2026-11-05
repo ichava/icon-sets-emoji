@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Simtabi\Laranail\Ichava\IconSetsEmoji\Enums\Set;
-use Simtabi\Laranail\Ichava\IconSetsEmoji\Enums\Category;
+use Simtabi\Laranail\Ichava\IconSetsTwemoji\Enums\Set;
+use Simtabi\Laranail\Ichava\IconSetsTwemoji\Enums\Category;
 
 /**
  * Pins the canonical `resources/` shape shared by every Ichava icon pack.
@@ -86,7 +86,7 @@ it('config json is this package', function (): void {
         flags: JSON_THROW_ON_ERROR,
     );
 
-    $this->assertSame('ichava/icon-sets-emoji', $config['package']['name']);
+    $this->assertSame('ichava/icon-sets-twemoji', $config['package']['name']);
 });
 
 function emoji_resources(): string
