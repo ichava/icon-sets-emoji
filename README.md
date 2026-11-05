@@ -62,6 +62,7 @@ The full documentation lives in this repository, under `docs/`, and is indexed b
 - [Release](docs/release.md) — how a version is cut, and when the core floor moves
 - [Sets](docs/sets.md) — the Twemoji set, its count, and where OpenMoji went
 - [Categories](docs/categories.md) — the category tree and how to address a codepoint
+- [Customisation](docs/customization.md) — size, colour and accessibility for these emoji
 - [Attribution](docs/attribution.md) — per-set licence terms, which differ, and where versions are recorded
 
 ### Shared across every pack
