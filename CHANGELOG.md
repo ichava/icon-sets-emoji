@@ -6,8 +6,9 @@ All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https:
 
 ### Fixed
 
+- **`keycap: *` ships as `symbols/keycap-asterisk.svg`** in `openmoji-color` and `openmoji-black`, instead of being lost to `keycap: #`. Both names slug to `keycap`; the sync now gives the first in Unicode order the base slug and the later one a name read from its own (icon-sets-sync#91). `symbols/keycap.svg` is still `keycap: #`, as shipped. Each OpenMoji set goes from 3,566 to 3,567 SVGs. Re-synced on icon-sets-sync `00579ad`; the other 3,566 changes per set are root attribute order (`xmlns` last, as upstream writes it) and upstream's `color` kept, with no artwork change. Twemoji is unchanged.
 - **Stray text line removed from `openmoji-color/travel-places/high-speed-train.svg`** (a lone `d` between `<g id="color">` and its first path, shipped by upstream OpenMoji 15.1.0; the same line icon-sets-openmoji#4 removed). The icon generator refuses such a file. A scan of all 10,567 SVGs found no other. Only that line changed.
-- **`tests/Unit/NoStrayTextNodesTest.php`** fails on any text directly under `<svg>` or `<g>` in the pack, floored at 10,567 files. Proven red on the unfixed file.
+- **`tests/Unit/NoStrayTextNodesTest.php`** fails on any text directly under `<svg>` or `<g>` in the pack, floored at 10,569 files since `keycap-asterisk` was added (10,567 before). Proven red on the unfixed file.
 
 ### Added
 
@@ -20,6 +21,7 @@ All notable changes to `ichava/icon-sets-emoji` follow [Keep a Changelog](https:
 
 ### Changed
 
+- **The upstream sync runs icon-sets-sync `00579ad`** (icon-sets-sync#88, icon-sets-sync#89, icon-sets-sync#90, icon-sets-sync#91), up from `5d70f5d`. icon-sets-sync#91 gives `keycap: *` its own slug, `keycap-asterisk`. icon-sets-sync#90 categorises OpenMoji 15.1.0 against Unicode 16.0, as shipped, instead of 15.1 (which would move crab, lobster, oyster, shrimp and squid), keeps the fully-qualified white flag over its FE0F-less duplicate, and stops every real emoji sync from failing on Twemoji's licence. It also carries the `split-variants` and `exclude` transforms, the build-per-OS layout and the `licence_sha256` guard. The `uses:` pin and `toolkit-ref` move together; the reusable workflow's inputs did not change between the two commits, so the caller's `with:` block is untouched.
 - **`sync-upstream.yml` is a caller of icon-sets-sync's reusable `sync-pack.yml`**, pinned to a full commit SHA (icon-sets-sync#79). It builds the toolkit from source at that commit instead of `docker build` from `main`, grants `GITHUB_TOKEN` only `contents: read` and `issues: write` (the `contents`, `pull-requests` and `statuses: write` grants are gone: the Refresh Bot token does the writes), and opens an issue on an upstream licence change. The in-job Pest run and commit status are dropped; the sync pull request now starts the normal CI. `tests/Unit/SyncWorkflowCallerTest.php` pins the pin, the triggers and the permissions, and `symfony/yaml` joins `require-dev` for it.
 
 - **Documentation links point at each repository's own `docs/`** (Sim, 2026-11-03: "all ichava repos have docs in their respective repos. thats by design"). Links to `opensource.simtabi.com/documentation/ichava/...` and the `opensource.simtabi.com/products/ichava/...` homepage, which answer 404 for every ichava page, now go to the matching `docs/*.md` on GitHub, or to the repository itself. Each target was checked to exist on that repository's `main`. The manifest's `homepage` and `support.docs` follow.

@@ -2,14 +2,14 @@
 
 *Reference.*
 
-`ichava/icon-sets-emoji` ships **10,567 SVGs across three sets**. The `Set` enum in
+`ichava/icon-sets-emoji` ships **10,569 SVGs across three sets**. The `Set` enum in
 `src/Enums/Set.php` is the source of truth.
 
 | Set | SVGs | Path prefix | Style | Upstream |
 |---|---:|---|---|---|
 | `twemoji` (default) | 3,435 | `twemoji/<category>/<name>` | full colour, Twitter/X house style | [jdecked/twemoji](https://github.com/jdecked/twemoji) |
-| `openmoji-color` (prefer icon-sets-openmoji) | 3,566 | `openmoji-color/<category>/<name>` | full colour, OpenMoji house style | [OpenMoji](https://openmoji.org) |
-| `openmoji-black` (prefer icon-sets-openmoji) | 3,566 | `openmoji-black/<category>/<name>` | single-colour line art, follows `currentColor` | [OpenMoji](https://openmoji.org) |
+| `openmoji-color` (prefer icon-sets-openmoji) | 3,567 | `openmoji-color/<category>/<name>` | full colour, OpenMoji house style | [OpenMoji](https://openmoji.org) |
+| `openmoji-black` (prefer icon-sets-openmoji) | 3,567 | `openmoji-black/<category>/<name>` | single-colour line art, follows `currentColor` | [OpenMoji](https://openmoji.org) |
 
 Counts measured with `find resources/assets/svg/files/<set> -name '*.svg' | wc -l`. The vendored
 version of each upstream is recorded in `resources/assets/svg/config.json`, not here: a version

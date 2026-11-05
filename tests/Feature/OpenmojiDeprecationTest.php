@@ -41,8 +41,9 @@ it(description: 'marks both OpenMoji sets deprecated as contract section 8 gives
     expect($categories['openmoji-color']['deprecated'])->toBe($marker)
         ->and($categories['openmoji-black']['deprecated'])->toBe($marker)
         ->and($categories['twemoji'])->not->toHaveKey('deprecated')
-        // Deprecated, not removed: both sets still ship.
-        ->and(glob(dirname(__DIR__, 2) . '/resources/assets/svg/files/openmoji-{color,black}/*/*.svg', GLOB_BRACE))->toHaveCount(7132);
+        // Deprecated, not removed: both sets still ship. 3,567 per set since keycap: * became
+        // keycap-asterisk (icon-sets-sync#91) instead of being lost to keycap: #.
+        ->and(glob(dirname(__DIR__, 2) . '/resources/assets/svg/files/openmoji-{color,black}/*/*.svg', GLOB_BRACE))->toHaveCount(7134);
 });
 
 it(description: 'names 0.1.0 in every deprecation notice, never the 0.2.0 that will not exist', closure: function () {

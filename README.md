@@ -5,7 +5,7 @@
 [![Static analysis](https://github.com/ichava/icon-sets-emoji/actions/workflows/code-quality.yml/badge.svg)](https://github.com/ichava/icon-sets-emoji/actions/workflows/code-quality.yml)
 [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-> Emoji for the Ichava Laravel icon ecosystem: 10,567 SVGs across Twemoji, OpenMoji colour and OpenMoji black.
+> Emoji for the Ichava Laravel icon ecosystem: 10,569 SVGs across Twemoji, OpenMoji colour and OpenMoji black.
 
 For new work, install [`ichava/icon-sets-openmoji`](https://github.com/ichava/icon-sets-openmoji) (preferred since 0.1.0) for the OpenMoji art: the same files in a pack of their own. The two OpenMoji sets here stay supported in v0.1.0, and with both packs installed the old ids resolve there; see [Sets](docs/sets.md).
 

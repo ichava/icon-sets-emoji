@@ -58,8 +58,8 @@ function pack_svg_files(string $root): array
 it('has no text node directly under svg or g in any icon', function (): void {
     $files = pack_svg_files(dirname(__DIR__, 2) . '/resources/assets/svg/files');
 
-    // 3,435 twemoji + 3,566 openmoji-black + 3,566 openmoji-color. A glob that stops matching must fail, not pass.
-    expect(count($files))->toBeGreaterThanOrEqual(10567);
+    // 3,435 twemoji + 3,567 openmoji-black + 3,567 openmoji-color. A glob that stops matching must fail, not pass.
+    expect(count($files))->toBeGreaterThanOrEqual(10569);
 
     $offenders = [];
     foreach ($files as $file) {
